@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://qrebecca.github.io/Case/sitemap.xml
+
+# Disallow development files
+Disallow: /.github/
+Disallow: /README.md

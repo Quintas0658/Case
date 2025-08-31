@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SaveWise Case Study: From Product Hunt Failure to $25k MRR · Product–Channel Fit</title>
+  <meta name="description" content="How SaveWise cashback tool failed on Product Hunt but found Product-Channel Fit in Reddit communities like r/churning, reaching $25k MRR in 15 months.">
+  <meta name="keywords" content="SaveWise, product-channel fit, reddit marketing, cashback, startup case study, r/churning, community marketing">
+  <meta name="author" content="PCF Cases">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://qrebecca.github.io/Case/cases/savewise.html">
+  <meta property="og:title" content="SaveWise: From Product Hunt Failure to $25k MRR">
+  <meta property="og:description" content="How SaveWise cashback tool failed on Product Hunt but found Product-Channel Fit in Reddit communities, reaching $25k MRR in 15 months.">
+  <meta property="og:image" content="https://qrebecca.github.io/Case/assets/savewise-og.png">
+  <meta property="article:published_time" content="2024-01-01T00:00:00Z">
+  <meta property="article:section" content="Case Studies">
+  <meta property="article:tag" content="Product-Channel Fit">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://qrebecca.github.io/Case/cases/savewise.html">
+  <meta property="twitter:title" content="SaveWise: From Product Hunt Failure to $25k MRR">
+  <meta property="twitter:description" content="How SaveWise found Product-Channel Fit in Reddit communities after failing on Product Hunt. 97% revenue from lifetime deals.">
+  <meta property="twitter:image" content="https://qrebecca.github.io/Case/assets/savewise-og.png">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://qrebecca.github.io/Case/cases/savewise.html">
+  
+  <!-- Robots -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SaveWise Case Study: From Product Hunt Failure to $25k MRR",
+    "description": "How SaveWise cashback tool failed on Product Hunt but found Product-Channel Fit in Reddit communities like r/churning, reaching $25k MRR in 15 months.",
+    "author": {
+      "@type": "Organization",
+      "name": "PCF Cases"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PCF Cases"
+    },
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-01-01",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://qrebecca.github.io/Case/cases/savewise.html"
+    },
+    "image": "https://qrebecca.github.io/Case/assets/savewise-og.png"
+  }
+  </script>
+
+  <!-- TailwindCSS 3 (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome (icons) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- Chart.js (charts) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root{
+      --hi:#4D6BFE;                 /* highlight color */
+      --hi8: rgba(77,107,254,.08);
+      --hi16: rgba(77,107,254,.16);
+      --hi24: rgba(77,107,254,.24);
+      --ink:#000;                   /* pure black */
+    }
+
+    body { color: var(--ink); background:#fff; }
+    .wrap { max-width: 1760px; margin-inline:auto; }
+
+    .display-hero { font-size: clamp(40px, 6.5vw, 96px); line-height: 1.03; font-weight: 900; letter-spacing: -0.02em; }
+    .display-num  { font-size: clamp(48px, 8vw, 128px); font-weight: 900; line-height: .95; letter-spacing: -0.03em; }
+    .kicker       { font-size:.9rem; letter-spacing:.14em; text-transform: uppercase; font-weight:800; }
+    .eyebrow      { font-size:.8rem; letter-spacing:.12em; text-transform: uppercase; font-weight:800; opacity:.8; }
+
+    .btn {
+      display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.15rem;
+      border:2px solid var(--ink); border-radius:999px; font-weight:900; background:#fff; color:var(--ink);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:hover { background:var(--hi8); transform: translateY(-1px); }
+
+    .btn-primary {
+      background:var(--hi); color:#fff; border-color:var(--hi);
+    }
+    .btn-primary:hover { background:#3B57E8; border-color:#3B57E8; }
+
+    .line-box { border:2px dashed var(--ink); border-radius:18px; }
+    .solid-box{ border:2px solid var(--ink);  border-radius:18px; }
+
+    .hi-field {
+      background:
+        radial-gradient(800px 320px at 110% -20%, var(--hi16), transparent 60%),
+        radial-gradient(600px 360px at -20% 120%, var(--hi8), transparent 60%);
+    }
+
+    .outlined {
+      color: var(--ink);
+      -webkit-text-stroke: 6px var(--hi);
+      paint-order: stroke fill;
+    }
+
+    .reveal { opacity:0; transform: translateY(10px); transition: all .5s ease; }
+    .reveal.show { opacity:1; transform: translateY(0); }
+
+    .grid-12 { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:1.25rem; }
+
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.85);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .breadcrumb {
+      color: #666;
+      font-size: .875rem;
+    }
+    .breadcrumb a {
+      color: var(--hi);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 1024px){
+      .sticky-top { position: sticky; top: 96px; }
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-[var(--hi)] selection:text-white">
+  <!-- Navigation -->
+  <nav class="nav-sticky">
+    <div class="wrap px-6 lg:px-12 xl:px-16 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <a href="../index.html" class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gradient-to-br from-[var(--hi)] to-purple-600 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-chart-network text-white text-sm"></i>
+            </div>
+            <h1 class="text-xl font-bold">PCF Cases</h1>
+          </a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="../index.html#cases" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">All Cases</a>
+          <a href="../index.html#about" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">About</a>
+          <a href="https://github.com/qrebecca/pcf-cases" class="btn text-sm">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap px-6 lg:px-12 xl:px-16 py-10 lg:py-14">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb mb-6">
+      <a href="../index.html">PCF Cases</a> / <span>SaveWise</span>
+    </div>
+
+    <!-- Case Header -->
+    <section class="grid-12 items-end gap-6 hi-field rounded-[28px] p-8 lg:p-12 solid-box reveal mb-10">
+      <div class="col-span-12 lg:col-span-7">
+        <div class="kicker">Case Study #001</div>
+        <h1 class="display-hero mt-3">
+          SaveWise<br class="hidden md:block"/>
+          <span class="text-xl font-semibold align-middle">Channel Fit beats everything</span>
+        </h1>
+        <p class="mt-5 max-w-3xl text-lg leading-relaxed">
+          SaveWise was built by ex-Microsoft/Instagram engineer <b>Avneesh</b>. The product was fine, 
+          but it failed at first because it was shown to the wrong people. 
+          Once it entered <b>the right user communities</b>, repeatable growth emerged.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a class="btn" href="#compare"><i class="fa-solid fa-table-columns"></i> Comparison</a>
+          <a class="btn" href="#playbook"><i class="fa-solid fa-timeline"></i> Playbook</a>
+          <a class="btn" href="#kpi"><i class="fa-solid fa-chart-line"></i> KPIs</a>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-5">
+        <div class="grid gap-5">
+          <div class="line-box p-6">
+            <div class="eyebrow mb-2">Revenue Split</div>
+            <div class="display-num outlined leading-none" id="num97">97%</div>
+            <div class="mt-2 text-sm">From Lifetime Deal ($119)</div>
+          </div>
+          <div class="line-box p-6">
+            <div class="eyebrow mb-2">MRR</div>
+            <div class="display-num outlined leading-none" id="num25k">$25k</div>
+            <div class="mt-2 text-sm">Achieved in 15 months, zero ads</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section class="solid-box p-8 lg:p-12 reveal mb-10">
+      <div class="kicker">Product</div>
+      <h3 class="mt-2 text-3xl font-extrabold">What SaveWise Does</h3>
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h4 class="font-bold text-lg mb-3">The Problem</h4>
+          <p class="leading-relaxed mb-4">
+            Credit card churners and deal hunters manually track cashback rates across 50+ platforms. 
+            They spend hours comparing Rakuten, Honey, credit card portals, and other cashback sites 
+            to find the best rates for each purchase.
+          </p>
+          <div class="line-box p-4">
+            <p class="text-sm"><b>Pain Point:</b> "I have 12 browser tabs open just to buy one thing"</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-3">The Solution</h4>
+          <p class="leading-relaxed mb-4">
+            SaveWise automatically finds the highest cashback rate across all platforms in real-time. 
+            One click shows you whether to use Rakuten (2%), your Chase card portal (3%), 
+            or TopCashback (4.5%) for any store.
+          </p>
+          <div class="line-box p-4">
+            <p class="text-sm"><b>Value Prop:</b> "Save time, maximize cashback, automate the hunt"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Grid -->
+    <section id="compare" class="grid-12 reveal mb-10">
+      <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
+        <div class="kicker">Wrong Channels</div>
+        <h2 class="mt-2 text-3xl font-extrabold">"Nice build" ≠ "I'll pay"</h2>
+        <div class="mt-5 grid gap-4">
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-solid fa-sitemap mr-2"></i> Product Hunt / Hacker News</div>
+            <ul class="mt-2 text-sm space-y-1">
+              <li>✅ 500+ upvotes, front page</li>
+              <li>✅ "Great build!", "Nice UI!"</li>
+              <li>❌ 12 signups, 1 paid user</li>
+            </ul>
+          </div>
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-solid fa-users mr-2"></i> Indie Hackers</div>
+            <ul class="mt-2 text-sm space-y-1">
+              <li>✅ Featured in newsletter</li>
+              <li>✅ 50+ encouraging comments</li>
+              <li>❌ Makers, not cashback users</li>
+            </ul>
+          </div>
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-regular fa-envelope mr-2"></i> Cold Outreach</div>
+            <p class="mt-2 text-sm">DMs to finance influencers → 2% response rate, mostly "cool product" replies</p>
+          </div>
+        </div>
+        <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p class="text-sm"><b>6 months:</b> $300 MRR, 47 users</p>
+        </div>
+      </article>
+
+      <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
+        <div class="kicker">Right Channels</div>
+        <h2 class="mt-2 text-3xl font-extrabold">Communities as true home</h2>
+        <div class="mt-5 grid gap-4">
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-brands fa-reddit-alien mr-2"></i> Reddit</div>
+            <ul class="mt-2 text-sm space-y-1">
+              <li><b>r/churning</b> — 180k credit card optimizers</li>
+              <li><b>r/awardtravel</b> — travel hackers</li>
+              <li>Users manually checking 10+ portals daily</li>
+            </ul>
+          </div>
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-brands fa-facebook mr-2"></i> Facebook Groups</div>
+            <ul class="mt-2 text-sm space-y-1">
+              <li><b>"Rakuten Stacks"</b> — 50k members</li>
+              <li><b>"Credit Card Points"</b> — deal sharing</li>
+              <li>Members posting spreadsheets manually</li>
+            </ul>
+          </div>
+          <div class="line-box p-5">
+            <div class="font-bold"><i class="fa-solid fa-comments mr-2"></i> Discord/Telegram</div>
+            <p class="mt-2 text-sm">Private deal-hunting groups with real-time alerts</p>
+          </div>
+        </div>
+        <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <p class="text-sm"><b>9 months later:</b> $25k MRR, 2,100 users</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Playbook -->
+    <section id="playbook" class="solid-box p-8 lg:p-12 reveal mb-10">
+      <div class="kicker">Strategy</div>
+      <h3 class="mt-2 text-3xl font-extrabold">5-Step Community Penetration</h3>
+      <ol class="mt-8 space-y-6">
+        <li class="p-5 line-box">
+          <h4 class="font-bold text-lg mb-2">01 Lurk & Learn (2 weeks)</h4>
+          <p class="text-sm mb-3">Spent weeks reading r/churning daily. Learned the lingo: "stacking", "portals", "max rates"</p>
+          <div class="bg-gray-50 p-3 rounded text-xs">
+            <b>Key insight:</b> They already had manual spreadsheets doing exactly what SaveWise automates
+          </div>
+        </li>
+        <li class="p-5 line-box">
+          <h4 class="font-bold text-lg mb-2">02 Probe in Q&A (1 month)</h4>
+          <p class="text-sm mb-3">Asked for feedback in "What Card Wednesday" threads before mentioning the product</p>
+          <div class="bg-gray-50 p-3 rounded text-xs">
+            <b>Response:</b> "This would save me 2 hours every week!"
+          </div>
+        </li>
+        <li class="p-5 line-box">
+          <h4 class="font-bold text-lg mb-2">03 Keyword Alerts (Ongoing)</h4>
+          <p class="text-sm mb-3">F5bot alerts for "cashback rates", "portal comparison" → answered within 30 mins</p>
+          <div class="bg-gray-50 p-3 rounded text-xs">
+            <b>Tool:</b> F5bot.com for Reddit, Google Alerts for general mentions
+          </div>
+        </li>
+        <li class="p-5 line-box">
+          <h4 class="font-bold text-lg mb-2">04 Lead with Value (3 months)</h4>
+          <p class="text-sm mb-3">Shared free cashback comparison sheets before pitching product → 1500+ downloads</p>
+          <div class="bg-gray-50 p-3 rounded text-xs">
+            <b>Strategy:</b> Give away 80% of the value to build trust
+          </div>
+        </li>
+        <li class="p-5 line-box">
+          <h4 class="font-bold text-lg mb-2">05 Earn Mod Trust (6 months)</h4>
+          <p class="text-sm mb-3">Became trusted contributor, got permission to post product updates</p>
+          <div class="bg-gray-50 p-3 rounded text-xs">
+            <b>Milestone:</b> Moderator invited to post in weekly "Tool Tuesday" thread
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- KPI Dashboard -->
+    <section id="kpi" class="grid-12 reveal mb-10">
+      <article class="col-span-12 lg:col-span-4 solid-box p-7 lg:p-9">
+        <div class="kicker">Monetization</div>
+        <h4 class="mt-2 text-2xl font-extrabold">Revenue Sources</h4>
+        <canvas id="donut" height="200"></canvas>
+        <div class="mt-4 space-y-2 text-sm">
+          <div class="flex justify-between">
+            <span>Lifetime Deal ($119)</span>
+            <span class="font-bold">97%</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Monthly Sub ($9)</span>
+            <span class="font-bold">3%</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-span-12 lg:col-span-5 solid-box p-7 lg:p-9">
+        <div class="kicker">Growth</div>
+        <h4 class="mt-2 text-2xl font-extrabold">MRR Trajectory (15 months)</h4>
+        <canvas id="mrr" height="200"></canvas>
+        <div class="mt-4 grid grid-cols-3 gap-4 text-center text-sm">
+          <div>
+            <div class="font-bold text-lg">$300</div>
+            <div class="opacity-70">Month 6</div>
+          </div>
+          <div>
+            <div class="font-bold text-lg">$12k</div>
+            <div class="opacity-70">Month 12</div>
+          </div>
+          <div>
+            <div class="font-bold text-lg">$25k</div>
+            <div class="opacity-70">Month 15</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="col-span-12 lg:col-span-3 solid-box p-7 lg:p-9">
+        <div class="kicker">Efficiency</div>
+        <h4 class="mt-2 text-2xl font-extrabold">Zero Ad Spend</h4>
+        <div class="mt-4 space-y-4">
+          <div class="line-box p-3">
+            <div class="text-sm opacity-70">CAC</div>
+            <div class="font-bold">$0</div>
+          </div>
+          <div class="line-box p-3">
+            <div class="text-sm opacity-70">LTV</div>
+            <div class="font-bold">$119</div>
+          </div>
+          <div class="line-box p-3">
+            <div class="text-sm opacity-70">Conversion</div>
+            <div class="font-bold">23%</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Key Insights -->
+    <section class="solid-box p-8 lg:p-12 reveal mb-10">
+      <div class="kicker">Insights</div>
+      <h3 class="mt-2 text-3xl font-extrabold">What Made the Difference</h3>
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <div class="space-y-4">
+          <div class="line-box p-5">
+            <h4 class="font-bold mb-2">🎯 Audience Precision</h4>
+            <p class="text-sm">Reddit churners weren't "potential users" — they were <b>current users</b> doing this manually</p>
+          </div>
+          <div class="line-box p-5">
+            <h4 class="font-bold mb-2">💰 Monetization Fit</h4>
+            <p class="text-sm">Lifetime deals work in deal-hunting communities who <b>expect</b> one-time purchases</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="line-box p-5">
+            <h4 class="font-bold mb-2">⏰ Timing Advantage</h4>
+            <p class="text-sm">Answered questions in real-time when users were <b>actively looking</b> for solutions</p>
+          </div>
+          <div class="line-box p-5">
+            <h4 class="font-bold mb-2">🤝 Community Trust</h4>
+            <p class="text-sm">Became a <b>contributor first</b>, vendor second — earned the right to promote</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Takeaways -->
+    <section class="solid-box p-8 lg:p-12 reveal mb-10">
+      <div class="kicker">Takeaways</div>
+      <h3 class="mt-2 text-3xl font-extrabold">Actionable Lessons</h3>
+      <ul class="mt-8 space-y-4">
+        <li class="line-box p-5">
+          <h4 class="font-bold mb-2">Find users, not audiences</h4>
+          <p class="text-sm">Don't target "people who might want this" — find people already solving this problem manually</p>
+        </li>
+        <li class="line-box p-5">
+          <h4 class="font-bold mb-2">Contribute before you pitch</h4>
+          <p class="text-sm">Spend 10x more time giving value than asking for sales. Trust is the prerequisite to conversion</p>
+        </li>
+        <li class="line-box p-5">
+          <h4 class="font-bold mb-2">Channel shapes monetization</h4>
+          <p class="text-sm">Lifetime deals work in deal communities, subscriptions work in productivity communities</p>
+        </li>
+        <li class="line-box p-5">
+          <h4 class="font-bold mb-2">Manual processes → Automation opportunity</h4>
+          <p class="text-sm">When you see communities sharing spreadsheets, there's probably a SaaS opportunity</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Navigation -->
+    <section class="flex justify-between items-center">
+      <a href="../index.html" class="btn">
+        <i class="fa-solid fa-arrow-left"></i> All Cases
+      </a>
+      <div class="text-sm opacity-70">
+        Case Study #001
+      </div>
+      <div class="btn opacity-50 cursor-not-allowed">
+        Next Case <i class="fa-solid fa-arrow-right"></i>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-gray-200 mt-16">
+    <div class="wrap px-6 lg:px-12 xl:px-16 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-sm opacity-70">
+          SaveWise case study • Part of Product-Channel Fit Cases
+        </div>
+        <div class="flex gap-4">
+          <a href="https://github.com/qrebecca/pcf-cases" class="text-sm hover:text-[var(--hi)] transition-colors">
+            <i class="fa-brands fa-github mr-1"></i> Suggest Edit
+          </a>
+          <a href="../index.html" class="text-sm hover:text-[var(--hi)] transition-colors">
+            <i class="fa-solid fa-home mr-1"></i> Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Charts
+    new Chart(document.getElementById('donut'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Lifetime $119', 'Subscriptions'],
+        datasets: [{
+          data: [97, 3],
+          backgroundColor: ['rgba(77,107,254,0.28)', 'rgba(0,0,0,0.08)'],
+          borderColor: ['#4D6BFE', '#000'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        cutout: '68%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 20
+            }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('mrr'), {
+      type: 'line',
+      data: {
+        labels: Array.from({length: 15}, (_, i) => `M${i + 1}`),
+        datasets: [{
+          data: [200, 350, 520, 700, 950, 1300, 1800, 2600, 4200, 6400, 9300, 12800, 17000, 21000, 25000],
+          borderColor: '#000',
+          backgroundColor: 'rgba(77,107,254,0.18)',
+          borderWidth: 2,
+          tension: 0.35,
+          fill: true
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            ticks: {
+              callback: function(value) {
+                return '$' + (value >= 1000 ? (value/1000) + 'k' : value);
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
