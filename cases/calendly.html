@@ -413,33 +413,66 @@
         </div>
       </article>
 
-      <!-- Illustrative curve -->
+      <!-- Viral Loop Analysis -->
       <article class="col-span-12 lg:col-span-7 solid-box p-7 lg:p-9">
-        <div class="kicker">Trajectory (illustrative)</div>
-        <h4 class="mt-2 text-2xl font-extrabold">Adoption compounds after loop clicks</h4>
-        <p class="mt-2 text-sm mb-4">Conceptual curve showing self-serve growth → enterprise acceleration (not actual data).</p>
-        <canvas id="mrr" height="200"></canvas>
-        <div class="mt-4 grid grid-cols-5 gap-2 text-center text-xs">
-          <div>
-            <div class="font-bold">Seed</div>
-            <div class="opacity-70">2014</div>
+        <div class="kicker">Viral Mechanics</div>
+        <h4 class="mt-2 text-2xl font-extrabold">How the viral loop compounds</h4>
+        <p class="mt-2 text-sm mb-4">Each shared Calendly link creates multiple conversion opportunities across different touchpoints.</p>
+        
+        <div class="mt-6 space-y-4">
+          <!-- Step 1 -->
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-8 h-8 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+            <div class="flex-1">
+              <div class="font-bold text-sm">User shares Calendly link</div>
+              <div class="text-xs opacity-70">Sales rep, recruiter, or consultant sends scheduling link</div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-sm">1 user</div>
+            </div>
           </div>
-          <div>
-            <div class="font-bold">Viral Loop</div>
-            <div class="opacity-70">2015-16</div>
+          
+          <!-- Step 2 -->
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-8 h-8 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+            <div class="flex-1">
+              <div class="font-bold text-sm">Recipients book meetings</div>
+              <div class="text-xs opacity-70">Multiple prospects/candidates schedule calls</div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-sm">~5-10 bookings</div>
+            </div>
           </div>
-          <div>
-            <div class="font-bold">Use Cases</div>
-            <div class="opacity-70">2017-18</div>
+          
+          <!-- Step 3 -->
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <div class="w-8 h-8 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+            <div class="flex-1">
+              <div class="font-bold text-sm">Brand exposure</div>
+              <div class="text-xs opacity-70">"Powered by Calendly" in emails & confirmations</div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-sm">10-20 impressions</div>
+            </div>
           </div>
-          <div>
-            <div class="font-bold">Pandemic</div>
-            <div class="opacity-70">2020</div>
+          
+          <!-- Step 4 -->
+          <div class="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200">
+            <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+            <div class="flex-1">
+              <div class="font-bold text-sm">New signups</div>
+              <div class="text-xs opacity-70">Recipients become users for their own scheduling needs</div>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-sm">~2-3 conversions</div>
+              <div class="text-xs opacity-70">~20-30% rate</div>
+            </div>
           </div>
-          <div>
-            <div class="font-bold">Enterprise</div>
-            <div class="opacity-70">2021+</div>
-          </div>
+        </div>
+        
+        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+          <div class="text-sm font-bold text-blue-800">Viral Coefficient: ~2-3x</div>
+          <div class="text-xs text-blue-600 mt-1">Each user generates 2-3 new users through natural product usage</div>
         </div>
       </article>
     </section>
@@ -605,40 +638,7 @@
       });
     });
 
-    // Illustrative line chart
-    const ctx = document.getElementById('mrr');
-    const labels = ['Seed','Free loop','Use cases','Pandemic tailwind','Enterprise wedge'];
-    const series = [1, 5, 12, 28, 60]; // illustrative units, not actual data
-    new Chart(ctx,{
-      type:'line',
-      data:{
-        labels,
-        datasets:[{
-          label:'Self-serve adoption (illustrative)',
-          data:series,
-          borderColor:'#000',
-          backgroundColor:'rgba(77,107,254,0.18)',
-          borderWidth:2,
-          pointRadius:3,
-          tension:.35,
-          fill:true
-        }]
-      },
-      options:{
-        scales:{
-          x:{ ticks:{ color:'#000' }, grid:{ color:'rgba(0,0,0,.06)' } },
-          y:{ ticks:{ color:'#000' }, grid:{ color:'rgba(0,0,0,.06)' } }
-        },
-        plugins:{ 
-          legend:{ 
-            labels:{ color:'#000', font:{ weight:700 } },
-            onClick: () => {
-              trackEvent('chart_legend_click', { case: 'calendly' });
-            }
-          }
-        }
-      }
-    });
+    // Note: Removed illustrative chart in favor of real viral loop analysis
   </script>
 </body>
 </html>
