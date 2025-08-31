@@ -1,7 +1,7 @@
-name: 📚 Submit a Case Study
-description: Submit a Product-Channel Fit case study for analysis
-title: "[CASE] "
-labels: ["case-submission", "triage"]
+name: 💡 Request Case Analysis
+description: Suggest a company/product for Product-Channel Fit analysis
+title: "[REQUEST] "
+labels: ["case-request", "triage"]
 projects: []
 assignees:
   - Quintas0658
@@ -9,109 +9,47 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for submitting a case study! This helps our community learn from real Product-Channel Fit stories.
+        ## 🎯 Request a Case Study Analysis
         
-        ## 📋 Submission Guidelines
-        - Share real companies and actual data (when possible)
-        - Focus on channel discovery, not just product features
-        - Include both failures and successes
+        Know a company with an interesting Product-Channel Fit story? Just tell us about it and we'll do the research!
+        
+        **Examples:** "Can you analyze how Discord found its gaming communities?" or "I heard Notion failed on Product Hunt but succeeded elsewhere..."
         
   - type: input
     id: company-name
     attributes:
       label: 🏢 Company/Product Name
-      description: What's the name of the company or product?
-      placeholder: e.g., SaveWise, Notion, Discord
+      description: Which company should we analyze?
+      placeholder: e.g., Discord, Notion, Figma, Clubhouse
     validations:
       required: true
       
   - type: textarea
-    id: product-description
+    id: why-interesting
     attributes:
-      label: 🎯 Product Description
-      description: What does this product do? What problem does it solve?
-      placeholder: Brief description of the product and its value proposition
+      label: 🤔 Why is this interesting?
+      description: What makes you think this company has a good Product-Channel Fit story?
+      placeholder: e.g., "I heard they failed on traditional marketing but exploded on TikTok" or "They seem to have found a unique community that loves them"
     validations:
       required: true
+      
+  - type: textarea
+    id: what-you-know
+    attributes:
+      label: 💭 What do you know about their story?
+      description: Share any details you've heard about their growth or channel discovery (optional)
+      placeholder: e.g., "I read they started in gaming Discord servers" or "Saw the founder tweet about Reddit being their main channel"
+    validations:
+      required: false
       
   - type: dropdown
-    id: category
+    id: priority
     attributes:
-      label: 📊 Category
-      description: What type of product is this?
+      label: 🔥 How interested are you in this analysis?
+      description: Help us prioritize which cases to research first
       options:
-        - SaaS/B2B
-        - Consumer App
-        - E-commerce
-        - Content/Media
-        - Developer Tools
-        - Other
+        - 🔥🔥🔥 Super interested - I really want to learn from this!
+        - 🔥🔥 Pretty interested - Would be cool to see
+        - 🔥 Mildly curious - Just throwing it out there
     validations:
       required: true
-      
-  - type: textarea
-    id: wrong-channels
-    attributes:
-      label: ❌ Failed Channels
-      description: What channels didn't work? What was tried but failed?
-      placeholder: e.g., Product Hunt got 500 upvotes but only 1 paying customer...
-    validations:
-      required: true
-      
-  - type: textarea
-    id: right-channels
-    attributes:
-      label: ✅ Successful Channels
-      description: Where did they find Product-Channel Fit? What worked?
-      placeholder: e.g., Reddit r/churning community, specific Facebook groups...
-    validations:
-      required: true
-      
-  - type: textarea
-    id: metrics
-    attributes:
-      label: 📈 Key Metrics
-      description: Share any growth numbers, revenue, users, timeline, etc.
-      placeholder: e.g., $25k MRR in 15 months, 2,100 users, 97% from lifetime deals...
-    validations:
-      required: false
-      
-  - type: textarea
-    id: strategy
-    attributes:
-      label: 🎯 Strategy & Tactics
-      description: How did they penetrate these channels? What was their approach?
-      placeholder: e.g., Spent 2 weeks lurking, provided value first, earned mod trust...
-    validations:
-      required: false
-      
-  - type: textarea
-    id: sources
-    attributes:
-      label: 📚 Sources
-      description: Where can we verify this information? Links to interviews, blog posts, etc.
-      placeholder: Links to founder interviews, blog posts, public metrics, etc.
-    validations:
-      required: false
-      
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: 💭 Additional Context
-      description: Any other insights or context that would be valuable?
-      placeholder: Founder background, timing, competition, unique circumstances...
-    validations:
-      required: false
-      
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: ✅ Submission Terms
-      description: Please confirm the following
-      options:
-        - label: This information is publicly available or I have permission to share it
-          required: true
-        - label: I understand this will be analyzed and published as a public case study
-          required: true
-        - label: I'm not affiliated with this company (or I've disclosed my relationship above)
-          required: false

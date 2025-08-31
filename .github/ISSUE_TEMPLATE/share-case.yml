@@ -1,0 +1,73 @@
+name: 📚 Share Your Case
+description: Share your own Product-Channel Fit story (for founders/teams)
+title: "[SHARE] "
+labels: ["case-share", "founder-story"]
+assignees:
+  - Quintas0658
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Share Your Product-Channel Fit Story
+        
+        Are you a founder or team member with a Product-Channel Fit story to share? We'd love to feature your journey!
+        
+        **Note:** This will become a public case study on our site. All shared information should be public or approved by your team.
+        
+  - type: input
+    id: company-name
+    attributes:
+      label: 🏢 Your Company/Product
+      description: What's your company or product name?
+      placeholder: e.g., SaveWise, YourStartupName
+    validations:
+      required: true
+      
+  - type: textarea
+    id: your-role
+    attributes:
+      label: 👤 Your Role
+      description: What's your role at the company?
+      placeholder: e.g., Founder, Marketing Lead, Growth Manager
+    validations:
+      required: true
+      
+  - type: textarea
+    id: product-brief
+    attributes:
+      label: 🎯 Product Brief
+      description: Quick description of what your product does
+      placeholder: e.g., "We help people find the best cashback rates across all platforms"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: channel-story
+    attributes:
+      label: 🎯 Your Channel Discovery Story
+      description: Tell us about your journey finding the right channels. What didn't work? What did?
+      placeholder: Share your channel discovery story - the failures, breakthroughs, and key learnings
+    validations:
+      required: true
+      
+  - type: textarea
+    id: contact-info
+    attributes:
+      label: 📧 How can we reach you?
+      description: Email or other contact method for follow-up questions
+      placeholder: your-email@company.com or Twitter @handle
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: ✅ Permissions
+      description: Please confirm
+      options:
+        - label: I have permission to share this information publicly
+          required: true
+        - label: I'm okay with this becoming a public case study
+          required: true
+        - label: You can contact me for clarifications or additional details
+          required: true

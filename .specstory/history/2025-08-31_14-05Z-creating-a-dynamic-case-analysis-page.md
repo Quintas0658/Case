@@ -1540,11 +1540,162 @@ Lines added: 1, lines removed: 1
 
 ---
 
+```bash
+mkdir -p .github/ISSUE_TEMPLATE
+```
 
+```
+
+Vercel CLI 34.2.4
+? Set up and deploy “~/Case”? yes
+? Which scope do you want to deploy to? quintas0658's projects
+? Link to existing project? no
+? What’s your project’s name? case
+? In which directory is your code located? ./
+Local settings detected in vercel.json:
+No framework detected. Default Project Settings:
+- Build Command: `npm run vercel-build` or `npm run build`
+- Development Command: None
+- Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+- Output Directory: `public` if it exists, or `.`
+? Want to modify these settings? no
+🔗  Linked to quintas0658s-projects/case (created .vercel and added it to .gitignore)
+🔍  Inspect: https://vercel.com/quintas0658s-projects/case/BBsojSzmGdc7f5GCwaC1BFSmaBc8
+ [1s]
+
+✅  Production: https://case-m8v55a1cx-quintas0658s-projects.vercel.app [1s]
+```
+
+---
+
+哇！看来 Vercel 也同时部署成功了！你现在有两个域名：
+- **GitHub Pages**: https://quintas0658.github.io/Case/
+- **Vercel**: https://case-m8v55a1cx-quintas0658s-projects.vercel.app
+
+让我继续创建 Issue 模板：
 
 ---
 
 
+
+---
+
+现在创建一个通用的功能请求模板：
+
+---
+
+
+
+---
+
+现在创建配置文件来自定义 Issues 页面：
+
+---
+
+
+
+---
+
+现在推送这些更新：
+
+---
+
+```bash
+git add .
+```
+
+```
+qrebecca@MacBook-Pro-5 Case % git add .
+qrebecca@MacBook-Pro-5 Case %
+```
+
+---
+
+```bash
+git commit -m "Add comprehensive case submission system
+
+- GitHub Issue templates for case submissions
+- Structured form with validation
+- Feature request template
+- Contact links and configuration
+- Fixed Submit Case button URL"
+```
+
+```
+qrebecca@MacBook-Pro-5 Case % git commit -m "Add comprehensive case submission system
+
+- GitHub Issue templates for case submissions
+- Structured form with validation
+- Feature request template
+- Contact links and configuration
+- Fixed Submit Case button URL"
+[main e080039] Add comprehensive case submission system
+ 7 files changed, 1239 insertions(+), 2 deletions(-)
+ create mode 100644 .github/ISSUE_TEMPLATE/case-submission.yml
+ create mode 100644 .github/ISSUE_TEMPLATE/config.yml
+ create mode 100644 .github/ISSUE_TEMPLATE/feature-request.yml
+qrebecca@MacBook-Pro-5 Case %
+```
+
+---
+
+```bash
+git push
+```
+
+```
+qrebecca@MacBook-Pro-5 Case % git push
+枚举对象中: 23, 完成.
+对象计数中: 100% (23/23), 完成.
+使用 14 个线程进行压缩
+压缩对象中: 100% (13/13), 完成.
+写入对象中: 100% (14/14), 49.87 KiB | 49.87 MiB/s, 完成.
+总共 14（差异 3），复用 0（差异 0），包复用 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:Quintas0658/Case.git
+   9ff70b3..e080039  main -> main
+qrebecca@MacBook-Pro-5 Case %
+```
+
+---
+
+## 🎯 Submit Case 功能设计完成！
+
+现在你的 "Submit Case" 按钮有了一个完整的提交系统：
+
+### ✨ **功能特点：**
+
+1. **结构化表单** - 用户点击按钮会看到专业的案例提交表单
+2. **必填字段验证** - 确保提交的信息完整
+3. **分类标签** - 自动给提交打上标签便于管理
+4. **多种提交类型** - 案例研究、功能请求、Bug 报告
+
+### 📋 **提交表单包含：**
+- 🏢 公司/产品名称
+- 🎯 产品描述
+- ❌ 失败的渠道
+- ✅ 成功的渠道  
+- 📈 关键数据指标
+- 🎯 策略和战术
+- 📚 信息来源
+- ✅ 提交条款确认
+
+### 🔄 **工作流程：**
+1. **用户提交** → GitHub Issue 自动创建
+2. **你收到通知** → 可以直接在 GitHub 回复讨论
+3. **分析完成** → 创建新的案例页面
+4. **Issue 关闭** → 链接到完成的案例研究
+
+### 🌟 **优势：**
+- **免费** - 不需要后端服务器
+- **专业** - 结构化的提交流程
+- **协作** - 可以和提交者讨论细节
+- **版本控制** - 所有提交都有历史记录
+- **通知** - 新提交会自动通知你
+
+**现在试试点击 "Submit Case" 按钮，你会看到一个专业的案例提交表单！** 🚀
+
+这个设计既简单又强大，完全适合你的案例收集网站！
 
 ---
 
