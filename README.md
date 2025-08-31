@@ -29,11 +29,11 @@ Each case study follows a structured analysis:
 
 ## 🚀 Contributing
 
-Have a great Product-Channel Fit story? [Submit it here](https://github.com/qrebecca/pcf-cases/issues)
+Have a great Product-Channel Fit story? [Submit it here](https://github.com/Quintas0658/Case/issues)
 
 ## 🌐 Live Site
 
-Visit the live site: [pcf-cases.github.io](https://qrebecca.github.io/Case/)
+Visit the live site: [quintas0658.github.io/Case](https://quintas0658.github.io/Case/)
 
 ## 📝 License
 

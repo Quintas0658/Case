@@ -32,6 +32,15 @@
   <!-- Robots -->
   <meta name="robots" content="index, follow">
   
+  <!-- Google Analytics 4 (Replace YOUR_GA4_ID with your actual ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA4_ID');
+  </script>
+
   <!-- Schema.org structured data -->
   <script type="application/ld+json">
   {
@@ -363,6 +372,58 @@
       });
     });
 
+    // Event tracking function
+    function trackEvent(eventName, eventData = {}) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, eventData);
+      }
+      console.log('Event:', eventName, eventData); // For debugging
+    }
+
+    // Track case card clicks
+    document.querySelectorAll('.case-card[onclick]').forEach(card => {
+      card.addEventListener('click', () => {
+        const caseName = card.querySelector('h3')?.textContent || 'Unknown';
+        trackEvent('case_click', {
+          case_name: caseName,
+          event_category: 'engagement',
+          event_label: caseName
+        });
+      });
+    });
+
+    // Track filter usage
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        trackEvent('filter_used', {
+          filter_type: filter,
+          event_category: 'interaction',
+          event_label: filter
+        });
+      });
+    });
+
+    // Track navigation clicks
+    document.querySelectorAll('a[href*="github"]').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('github_click', {
+          event_category: 'external_link',
+          event_label: 'GitHub'
+        });
+      });
+    });
+
+    // Track suggest analysis clicks
+    document.querySelectorAll('a[href*="issues"]').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('suggest_analysis', {
+          event_category: 'conversion',
+          event_label: 'Case Suggestion'
+        });
+      });
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -370,6 +431,12 @@
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Track internal navigation
+          trackEvent('internal_navigation', {
+            section: this.getAttribute('href'),
+            event_category: 'navigation'
+          });
         }
       });
     });
