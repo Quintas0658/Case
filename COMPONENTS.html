@@ -1,0 +1,316 @@
+<!-- 
+PCF Cases 可复用组件库
+复制粘贴这些组件来保持风格一致性
+-->
+
+<!-- ========== 页面框架组件 ========== -->
+
+<!-- 1. 标准导航栏 -->
+<nav class="nav-sticky">
+  <div class="wrap px-6 lg:px-12 xl:px-16 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-gradient-to-br from-[var(--hi)] to-purple-600 rounded-lg flex items-center justify-center">
+            <i class="fa-solid fa-chart-network text-white text-sm"></i>
+          </div>
+          <h1 class="text-xl font-bold">PCF Cases</h1>
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../index.html#cases" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">All Cases</a>
+        <a href="../index.html#about" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">About</a>
+        <a href="https://github.com/Quintas0658/Case" class="btn text-sm">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 2. 面包屑导航 -->
+<div class="breadcrumb mb-6">
+  <a href="../index.html">PCF Cases</a> / <span>案例名称</span>
+</div>
+
+<!-- 3. Hero区域模板 -->
+<section class="grid-12 items-end gap-6 hi-field rounded-[28px] p-8 lg:p-12 solid-box reveal mb-10">
+  <div class="col-span-12 lg:col-span-7">
+    <div class="kicker">Case Study #XXX</div>
+    <h1 class="display-hero mt-3">
+      公司名称<br class="hidden md:block"/>
+      <span class="text-xl font-semibold align-middle">核心洞察标语</span>
+    </h1>
+    <p class="mt-5 max-w-3xl text-lg leading-relaxed">
+      案例背景描述。可以包含创始人信息、产品简介、核心挑战等。保持在2-3句话内。
+    </p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a class="btn" href="#compare"><i class="fa-solid fa-table-columns"></i> Comparison</a>
+      <a class="btn" href="#playbook"><i class="fa-solid fa-timeline"></i> Playbook</a>
+      <a class="btn" href="#kpi"><i class="fa-solid fa-chart-line"></i> KPIs</a>
+    </div>
+  </div>
+  <div class="col-span-12 lg:col-span-5">
+    <div class="grid gap-5">
+      <!-- 指标卡片1 -->
+      <div class="line-box p-6">
+        <div class="eyebrow mb-2">指标标签</div>
+        <div class="display-num outlined leading-none">数值</div>
+        <div class="mt-2 text-sm">说明文字</div>
+      </div>
+      <!-- 指标卡片2 -->
+      <div class="line-box p-6">
+        <div class="eyebrow mb-2">指标标签</div>
+        <div class="display-num outlined leading-none">数值</div>
+        <div class="mt-2 text-sm">说明文字</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 内容区域组件 ========== -->
+
+<!-- 4. 产品概览区域 -->
+<section class="solid-box p-8 lg:p-12 reveal mb-10">
+  <div class="kicker">Product</div>
+  <h3 class="mt-2 text-3xl font-extrabold">What [公司名] Does</h3>
+  <div class="mt-8 grid gap-6 lg:grid-cols-2">
+    <div>
+      <h4 class="font-bold text-lg mb-3">The Problem</h4>
+      <p class="leading-relaxed mb-4">
+        问题描述...
+      </p>
+      <div class="line-box p-4">
+        <p class="text-sm"><b>Pain Point:</b> "用户痛点引用"</p>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-bold text-lg mb-3">The Solution</h4>
+      <p class="leading-relaxed mb-4">
+        解决方案描述...
+      </p>
+      <div class="line-box p-4">
+        <p class="text-sm"><b>Value Prop:</b> "价值主张引用"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 对比分析区域 -->
+<section id="compare" class="grid-12 reveal mb-10">
+  <!-- 失败的渠道 -->
+  <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
+    <div class="kicker">Wrong Channels</div>
+    <h2 class="mt-2 text-3xl font-extrabold">失败标题</h2>
+    <div class="mt-5 grid gap-4">
+      <div class="line-box p-5">
+        <div class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 渠道名称</div>
+        <ul class="mt-2 text-sm space-y-1">
+          <li>失败原因1</li>
+          <li>失败原因2</li>
+        </ul>
+      </div>
+      <div class="line-box p-5">
+        <div class="font-bold"><i class="fa-solid fa-dollar-sign mr-2"></i> 另一个失败渠道</div>
+        <p class="mt-2 text-sm">失败描述...</p>
+      </div>
+    </div>
+    <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+      <p class="text-sm"><b>Result:</b> 失败的具体结果</p>
+    </div>
+  </article>
+
+  <!-- 成功的渠道 -->
+  <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
+    <div class="kicker">Right Channels</div>
+    <h2 class="mt-2 text-3xl font-extrabold">成功标题</h2>
+    <div class="mt-5 grid gap-4">
+      <div class="line-box p-5">
+        <div class="font-bold"><i class="fa-solid fa-check mr-2"></i> 成功渠道</div>
+        <ul class="mt-2 text-sm list-disc pl-5">
+          <li>成功策略1</li>
+          <li>成功策略2</li>
+        </ul>
+      </div>
+      <div class="line-box p-5">
+        <div class="font-bold"><i class="fa-solid fa-rocket mr-2"></i> 另一个成功渠道</div>
+        <p class="mt-2 text-sm">成功描述...</p>
+      </div>
+    </div>
+    <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+      <p class="text-sm"><b>Result:</b> 成功的具体结果</p>
+    </div>
+  </article>
+</section>
+
+<!-- 6. 策略手册区域 -->
+<section id="playbook" class="solid-box p-8 lg:p-12 reveal mb-10">
+  <div class="kicker">Strategy</div>
+  <h3 class="mt-2 text-3xl font-extrabold">X-Step Playbook</h3>
+  <ol class="mt-8 space-y-6">
+    <li class="p-5 line-box">
+      <h4 class="font-bold text-lg mb-2">01 步骤标题</h4>
+      <p class="text-sm mb-3">步骤描述...</p>
+      <div class="bg-gray-50 p-3 rounded text-xs">
+        <b>Key insight:</b> 关键洞察
+      </div>
+    </li>
+    <li class="p-5 line-box">
+      <h4 class="font-bold text-lg mb-2">02 步骤标题</h4>
+      <p class="text-sm mb-3">步骤描述...</p>
+      <div class="bg-gray-50 p-3 rounded text-xs">
+        <b>Strategy:</b> 策略要点
+      </div>
+    </li>
+    <!-- 继续添加更多步骤 -->
+  </ol>
+</section>
+
+<!-- 7. KPI/数据区域 -->
+<section id="kpi" class="grid-12 reveal mb-10">
+  <!-- 关键指标 -->
+  <article class="col-span-12 lg:col-span-5 solid-box p-7 lg:p-9">
+    <div class="kicker">Metrics</div>
+    <h4 class="mt-2 text-2xl font-extrabold">关键数据</h4>
+    <div class="mt-4 space-y-3">
+      <div class="line-box p-4">
+        <div class="flex justify-between items-center">
+          <span class="text-sm font-bold">指标名称</span>
+          <span class="font-bold">数值</span>
+        </div>
+        <div class="text-xs opacity-70 mt-1">说明</div>
+      </div>
+      <!-- 继续添加更多指标 -->
+    </div>
+  </article>
+
+  <!-- 数据可视化区域 -->
+  <article class="col-span-12 lg:col-span-7 solid-box p-7 lg:p-9">
+    <div class="kicker">Growth</div>
+    <h4 class="mt-2 text-2xl font-extrabold">增长轨迹</h4>
+    <p class="mt-2 text-sm mb-4">图表说明...</p>
+    <!-- 这里可以放图表或其他可视化内容 -->
+    <canvas id="chart" height="200"></canvas>
+  </article>
+</section>
+
+<!-- 8. 洞察分析区域 -->
+<section class="solid-box p-8 lg:p-12 reveal mb-10">
+  <div class="kicker">Insights</div>
+  <h3 class="mt-2 text-3xl font-extrabold">What Made the Difference</h3>
+  <div class="mt-8 grid gap-6 lg:grid-cols-2">
+    <div class="space-y-4">
+      <div class="line-box p-5">
+        <h4 class="font-bold mb-2">🎯 洞察标题</h4>
+        <p class="text-sm">洞察内容描述</p>
+      </div>
+      <div class="line-box p-5">
+        <h4 class="font-bold mb-2">🔄 另一个洞察</h4>
+        <p class="text-sm">洞察内容描述</p>
+      </div>
+    </div>
+    <div class="space-y-4">
+      <div class="line-box p-5">
+        <h4 class="font-bold mb-2">⚡ 第三个洞察</h4>
+        <p class="text-sm">洞察内容描述</p>
+      </div>
+      <div class="line-box p-5">
+        <h4 class="font-bold mb-2">💰 第四个洞察</h4>
+        <p class="text-sm">洞察内容描述</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 可执行建议区域 -->
+<section class="solid-box p-8 lg:p-12 reveal mb-10">
+  <div class="kicker">Actionable Lessons</div>
+  <h3 class="mt-2 text-3xl font-extrabold">What builders can copy</h3>
+  <div class="grid grid-cols-12 gap-5 mt-6">
+    <div class="col-span-12 md:col-span-3 line-box p-5">
+      <div class="font-extrabold mb-1"><i class="fa-solid fa-lightbulb mr-2"></i> 建议标题</div>
+      <p class="text-sm">具体建议内容</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 line-box p-5">
+      <div class="font-extrabold mb-1"><i class="fa-solid fa-target mr-2"></i> 建议标题</div>
+      <p class="text-sm">具体建议内容</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 line-box p-5">
+      <div class="font-extrabold mb-1"><i class="fa-solid fa-rocket mr-2"></i> 建议标题</div>
+      <p class="text-sm">具体建议内容</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 line-box p-5">
+      <div class="font-extrabold mb-1"><i class="fa-solid fa-chart-line mr-2"></i> 建议标题</div>
+      <p class="text-sm">具体建议内容</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 案例导航区域 -->
+<section class="flex justify-between items-center">
+  <a href="../index.html" class="btn">
+    <i class="fa-solid fa-arrow-left"></i> All Cases
+  </a>
+  <div class="text-sm opacity-70">
+    Case Study #XXX
+  </div>
+  <a href="下一个案例.html" class="btn">
+    Next: 下一个案例名 <i class="fa-solid fa-arrow-right"></i>
+  </a>
+</section>
+
+<!-- 11. 标准页脚 -->
+<footer class="border-t border-gray-200 mt-16">
+  <div class="wrap px-6 lg:px-12 xl:px-16 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-sm opacity-70">
+        [公司名] case study • Part of Product-Channel Fit Cases
+      </div>
+      <div class="flex gap-4">
+        <a href="https://github.com/Quintas0658/Case" class="text-sm hover:text-[var(--hi)] transition-colors">
+          <i class="fa-brands fa-github mr-1"></i> Suggest Edit
+        </a>
+        <a href="../index.html" class="text-sm hover:text-[var(--hi)] transition-colors">
+          <i class="fa-solid fa-home mr-1"></i> Home
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== 小组件库 ========== -->
+
+<!-- 指标卡片 -->
+<div class="line-box p-4">
+  <div class="flex justify-between items-center">
+    <span class="text-sm font-bold">指标名称</span>
+    <span class="font-bold">数值</span>
+  </div>
+  <div class="text-xs opacity-70 mt-1">说明</div>
+</div>
+
+<!-- 洞察框 -->
+<div class="bg-gray-50 p-3 rounded text-xs">
+  <b>Key insight:</b> 具体洞察内容
+</div>
+
+<!-- 成功结果框 -->
+<div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+  <p class="text-sm"><b>Result:</b> 成功结果描述</p>
+</div>
+
+<!-- 失败结果框 -->
+<div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+  <p class="text-sm"><b>Result:</b> 失败结果描述</p>
+</div>
+
+<!-- 引用框 -->
+<div class="line-box p-4">
+  <p class="text-sm"><b>Pain Point:</b> "用户痛点的具体引用"</p>
+</div>
+
+<!-- 策略要点框 -->
+<div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+  <div class="text-sm font-bold text-blue-800">策略标题</div>
+  <div class="text-xs text-blue-600 mt-1">具体策略描述</div>
+</div>
