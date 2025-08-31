@@ -1,0 +1,117 @@
+name: 📚 Submit a Case Study
+description: Submit a Product-Channel Fit case study for analysis
+title: "[CASE] "
+labels: ["case-submission", "triage"]
+projects: []
+assignees:
+  - Quintas0658
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a case study! This helps our community learn from real Product-Channel Fit stories.
+        
+        ## 📋 Submission Guidelines
+        - Share real companies and actual data (when possible)
+        - Focus on channel discovery, not just product features
+        - Include both failures and successes
+        
+  - type: input
+    id: company-name
+    attributes:
+      label: 🏢 Company/Product Name
+      description: What's the name of the company or product?
+      placeholder: e.g., SaveWise, Notion, Discord
+    validations:
+      required: true
+      
+  - type: textarea
+    id: product-description
+    attributes:
+      label: 🎯 Product Description
+      description: What does this product do? What problem does it solve?
+      placeholder: Brief description of the product and its value proposition
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: category
+    attributes:
+      label: 📊 Category
+      description: What type of product is this?
+      options:
+        - SaaS/B2B
+        - Consumer App
+        - E-commerce
+        - Content/Media
+        - Developer Tools
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: wrong-channels
+    attributes:
+      label: ❌ Failed Channels
+      description: What channels didn't work? What was tried but failed?
+      placeholder: e.g., Product Hunt got 500 upvotes but only 1 paying customer...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: right-channels
+    attributes:
+      label: ✅ Successful Channels
+      description: Where did they find Product-Channel Fit? What worked?
+      placeholder: e.g., Reddit r/churning community, specific Facebook groups...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: metrics
+    attributes:
+      label: 📈 Key Metrics
+      description: Share any growth numbers, revenue, users, timeline, etc.
+      placeholder: e.g., $25k MRR in 15 months, 2,100 users, 97% from lifetime deals...
+    validations:
+      required: false
+      
+  - type: textarea
+    id: strategy
+    attributes:
+      label: 🎯 Strategy & Tactics
+      description: How did they penetrate these channels? What was their approach?
+      placeholder: e.g., Spent 2 weeks lurking, provided value first, earned mod trust...
+    validations:
+      required: false
+      
+  - type: textarea
+    id: sources
+    attributes:
+      label: 📚 Sources
+      description: Where can we verify this information? Links to interviews, blog posts, etc.
+      placeholder: Links to founder interviews, blog posts, public metrics, etc.
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 💭 Additional Context
+      description: Any other insights or context that would be valuable?
+      placeholder: Founder background, timing, competition, unique circumstances...
+    validations:
+      required: false
+      
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Submission Terms
+      description: Please confirm the following
+      options:
+        - label: This information is publicly available or I have permission to share it
+          required: true
+        - label: I understand this will be analyzed and published as a public case study
+          required: true
+        - label: I'm not affiliated with this company (or I've disclosed my relationship above)
+          required: false

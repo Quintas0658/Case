@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 General Discussion
+    url: https://github.com/Quintas0658/Case/discussions
+    about: Ask questions or discuss Product-Channel Fit topics
+  - name: 🐛 Bug Report
+    url: https://github.com/Quintas0658/Case/issues/new
+    about: Report a technical issue with the website
+  - name: 📧 Direct Contact
+    url: mailto:resean65@163.com?subject=PCF%20Cases%20Inquiry
+    about: Contact the maintainer directly
