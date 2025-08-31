@@ -53,511 +53,737 @@
     },
     "publisher": {
       "@type": "Organization",
-      "name": "PCF Cases"
-    },
-    "datePublished": "2024-01-02",
-    "dateModified": "2024-01-02",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
+      "name": "PCF Cases",
       "@id": "https://quintas0658.github.io/Case/cases/morning-brew.html"
     },
     "image": "https://quintas0658.github.io/Case/assets/morning-brew-og.png"
   }
   </script>
 
-  <!-- TailwindCSS 3 (CDN) -->
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome (icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <!-- Chart.js (charts) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
   <style>
-    :root{
-      --hi:#4D6BFE;                 /* highlight color */
-      --hi8: rgba(77,107,254,.08);
-      --hi16: rgba(77,107,254,.16);
-      --ink:#000;                   /* pure black */
+    :root {
+      --hi: #4D6BFE;
+      --hi8: rgba(77, 107, 254, .08);
+      --hi16: rgba(77, 107, 254, .16);
+      --ink: #000;
     }
-
-    body { color: var(--ink); background:#fff; }
-    .wrap { max-width: 1760px; margin-inline:auto; }
-
-    .display-hero { font-size: clamp(40px, 6.5vw, 96px); line-height: 1.03; font-weight: 900; letter-spacing: -0.02em; }
-    .display-num  { font-size: clamp(48px, 8vw, 128px); font-weight: 900; line-height: .95; letter-spacing: -0.03em; }
-    .kicker       { font-size:.9rem; letter-spacing:.14em; text-transform: uppercase; font-weight:800; }
-    .eyebrow      { font-size:.8rem; letter-spacing:.12em; text-transform: uppercase; font-weight:800; opacity:.8; }
-
-    .btn {
-      display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.15rem;
-      border:2px solid var(--ink); border-radius:999px; font-weight:900; background:#fff; color:var(--ink);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover { background:var(--hi8); transform: translateY(-1px); }
-
-    .btn-primary {
-      background:var(--hi); color:#fff; border-color:var(--hi);
-    }
-    .btn-primary:hover { background:#3B57E8; border-color:#3B57E8; }
-
-    .line-box { border:2px dashed var(--ink); border-radius:18px; }
-    .solid-box{ border:2px solid var(--ink);  border-radius:18px; }
-
-    .hi-field {
-      background:
-        radial-gradient(800px 320px at 110% -20%, var(--hi16), transparent 60%),
-        radial-gradient(600px 360px at -20% 120%, var(--hi8), transparent 60%);
-    }
-
-    .outlined {
-      color: var(--ink);
-      -webkit-text-stroke: 6px var(--hi);
-      paint-order: stroke fill;
-    }
-
-    .reveal { opacity:0; transform: translateY(10px); transition: all .5s ease; }
-    .reveal.show { opacity:1; transform: translateY(0); }
-
-    .grid-12 { display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:1.25rem; }
-
-    .nav-sticky {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.85);
-      border-bottom: 1px solid rgba(0,0,0,.08);
-    }
-
-    .breadcrumb {
-      color: #666;
-      font-size: .875rem;
-    }
-    .breadcrumb a {
-      color: var(--hi);
-      text-decoration: none;
-    }
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    @media (min-width: 1024px){
-      .sticky-top { position: sticky; top: 96px; }
-    }
+    body { color: var(--ink); background: #fff; font-family: system-ui, -apple-system, sans-serif; }
+    .wrap { max-width: 1400px; margin-inline: auto; }
+    .display-hero { font-size: clamp(40px, 6.5vw, 92px); font-weight: 900; line-height: 1.05; }
+    .display-num { font-size: clamp(36px, 6vw, 80px); font-weight: 900; line-height: .95; }
+    .btn { display: inline-flex; align-items: center; gap: .6rem; padding: .7rem 1.2rem; border: 2px solid var(--ink); border-radius: 999px; font-weight: 700; transition: .2s; text-decoration: none; color: var(--ink); }
+    .btn:hover { background: var(--hi8); transform: translateY(-1px); }
+    .line-box { border: 2px dashed var(--ink); border-radius: 18px; }
+    .solid-box { border: 2px solid var(--ink); border-radius: 18px; background: white; }
+    .kicker { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 800; color: var(--hi); }
+    .outlined { -webkit-text-stroke: 3px var(--hi); color: transparent; paint-order: stroke fill; }
+    .reveal { opacity: 0; transform: translateY(10px); transition: .5s; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
+    
+    /* Custom Morning Brew styles */
+    .morning-gradient { background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); }
+    .timeline-line { background: linear-gradient(to bottom, #ff6b35, #f7931e, #4D6BFE); }
   </style>
 </head>
 
 <body class="antialiased selection:bg-[var(--hi)] selection:text-white">
-  <!-- Navigation -->
-  <nav class="nav-sticky">
-    <div class="wrap px-6 lg:px-12 xl:px-16 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <a href="../index.html" class="flex items-center gap-3">
-            <div class="w-8 h-8 bg-gradient-to-br from-[var(--hi)] to-purple-600 rounded-lg flex items-center justify-center">
-              <i class="fa-solid fa-chart-network text-white text-sm"></i>
-            </div>
-            <h1 class="text-xl font-bold">PCF Cases</h1>
-          </a>
-        </div>
-        <div class="flex items-center gap-4">
-          <a href="../index.html#cases" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">All Cases</a>
-          <a href="../index.html#about" class="text-sm font-medium hover:text-[var(--hi)] transition-colors">About</a>
-          <a href="https://github.com/Quintas0658/Case" class="btn text-sm">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <main class="wrap px-6 lg:px-12 xl:px-16 py-10 lg:py-14">
-
-    <!-- Breadcrumb -->
-    <div class="breadcrumb mb-6">
-      <a href="../index.html">PCF Cases</a> / <span>Morning Brew</span>
-    </div>
-
-    <!-- 1) SPLIT HERO -->
-    <section class="grid-12 items-end gap-6 hi-field rounded-[28px] p-8 lg:p-12 solid-box reveal mb-10">
-      <!-- Left: headline -->
+    
+    <!-- Hero Section - Unique for Morning Brew story -->
+    <section class="hero-section grid-12 mb-16">
       <div class="col-span-12 lg:col-span-7">
-        <div class="kicker">Case Study #003</div>
-        <h1 class="display-hero mt-3">
-          Morning Brew<br class="hidden md:block"/>
-          <span class="text-xl font-semibold align-middle">Content-Led Referral Flywheel</span>
+        <div class="breadcrumb mb-6 text-sm">
+          <a href="../index.html" class="text-[var(--hi)] hover:underline">PCF Cases</a> 
+          <span class="mx-2">/</span> 
+          <span>Morning Brew</span>
+        </div>
+        
+        <div class="kicker mb-4">Case Study #003 • Content Strategy</div>
+        
+        <h1 class="display-hero">
+          Morning Brew<br/>
+          <span class="text-2xl font-semibold text-[var(--hi)] mt-2 block">
+            "Your witty friend explaining business news"
+          </span>
         </h1>
-        <p class="mt-5 max-w-3xl text-lg leading-relaxed">
-          Started by <b>Alex Lieberman</b> and <b>Austin Rief</b> in 2015 as a college newsletter to make business news "engaging and accessible".
-          The breakthrough came when they realized: authentic content + community + gamified referrals = self-sustaining growth engine.
-          From manual campus pitches to 4M+ subscribers — the power of <b>Content-Channel Fit</b>.
+        
+        <p class="mt-8 max-w-4xl text-xl leading-relaxed text-gray-700">
+          How two college students turned campus frustration with boring business news into a 
+          <b class="text-[var(--ink)]">$75M media empire</b> by building an authentic brand voice 
+          and engineering a referral flywheel that grew to <b class="text-[var(--ink)]">4M+ subscribers</b>.
         </p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="btn" href="#compare"><i class="fa-solid fa-table-columns"></i> Comparison</a>
-          <a class="btn" href="#playbook"><i class="fa-solid fa-timeline"></i> Playbook</a>
-          <a class="btn" href="#kpi"><i class="fa-solid fa-chart-line"></i> KPIs</a>
+        
+        <div class="mt-10 flex gap-4 flex-wrap">
+          <a href="#founder-story" class="btn">
+            <i class="fa-solid fa-heart mr-2"></i> The Human Story
+          </a>
+          <a href="#evolution" class="btn">
+            <i class="fa-solid fa-rocket mr-2"></i> Strategy Evolution
+          </a>
+          <a href="#referral-engine" class="btn">
+            <i class="fa-solid fa-gift mr-2"></i> $0.25 Referral Engine
+          </a>
+          <a href="#impact" class="btn">
+            <i class="fa-solid fa-chart-line mr-2"></i> Real Impact
+          </a>
         </div>
       </div>
-
-      <!-- Right: oversized metrics -->
+      
+      <!-- Visual transformation story -->
       <div class="col-span-12 lg:col-span-5">
-        <div class="grid gap-5">
-          <div class="line-box p-6">
-            <div class="eyebrow mb-2">Subscribers</div>
-            <div class="display-num outlined leading-none" id="num4m">4M+</div>
-            <div class="mt-2 text-sm">Newsletter readers (2022)</div>
-          </div>
-          <div class="line-box p-6">
-            <div class="eyebrow mb-2">Revenue</div>
-            <div class="display-num outlined leading-none" id="num70m">$70M</div>
-            <div class="mt-2 text-sm">Annual revenue (2022)</div>
+        <div class="solid-box p-8 morning-gradient text-white">
+          <div class="text-center">
+            <div class="text-6xl mb-4">📖</div>
+            <div class="text-lg font-semibold opacity-90">2015: College PDF</div>
+            <div class="display-num opacity-80">1K</div>
+            <div class="text-sm opacity-70 mb-6">Manual email collection</div>
+            
+            <div class="flex justify-center mb-6">
+              <div class="w-16 h-1 bg-white opacity-50 rounded"></div>
+            </div>
+            
+            <div class="text-6xl mb-4">🏢</div>
+            <div class="text-lg font-semibold opacity-90">2022: Media Empire</div>
+            <div class="display-num opacity-80">4M+</div>
+            <div class="text-sm opacity-70">Gamified referral flywheel</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Product Overview -->
-    <section class="solid-box p-8 lg:p-12 reveal mb-10">
-      <div class="kicker">Product</div>
-      <h3 class="mt-2 text-3xl font-extrabold">What Morning Brew Does</h3>
-      <div class="mt-8 grid gap-6 lg:grid-cols-2">
-        <div>
-          <h4 class="font-bold text-lg mb-3">The Problem</h4>
-          <p class="leading-relaxed mb-4">
-            Traditional business news was "dry and dense" - WSJ, Bloomberg, and other outlets created content that felt 
-            intimidating and inaccessible to young professionals and students trying to stay informed about business and finance.
-          </p>
-          <div class="line-box p-4">
-            <p class="text-sm"><b>Pain Point:</b> "Business news felt like homework, not something I wanted to read"</p>
-          </div>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg mb-3">The Solution</h4>
-          <p class="leading-relaxed mb-4">
-            A daily newsletter that makes business news "engaging and accessible" with a conversational, witty tone. 
-            Complex financial topics explained like a smart friend breaking down the news over coffee.
-          </p>
-          <div class="line-box p-4">
-            <p class="text-sm"><b>Value Prop:</b> "Your witty friend explaining business news"</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2) COMPARISON GRID -->
-    <section id="compare" class="grid-12 reveal mb-10">
-      <!-- Mismatch -->
-      <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
-        <div class="kicker">Wrong Channels</div>
-        <h2 class="mt-2 text-3xl font-extrabold">Early struggles with scale</h2>
-        <div class="mt-5 grid gap-4">
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-microphone mr-2"></i> Verbal pitches in class</div>
-            <ul class="mt-2 text-sm space-y-1">
-              <li>5-minute pitches to distracted students</li>
-              <li>Students not ready to sign up on the spot</li>
-              <li>Conversion rate less than 10%</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-dollar-sign mr-2"></i> Traditional marketing</div>
-            <ul class="mt-2 text-sm space-y-1">
-              <li>No budget for paid advertising</li>
-              <li>Social media had limited reach</li>
-              <li>Hard to compete with established media brands</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Why it struggled</div>
-            <p class="mt-2 text-sm">High friction signup process didn't match the casual, accessible brand promise.</p>
-          </div>
-        </div>
-        <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p class="text-sm"><b>Result:</b> Slow initial growth, difficult to scale beyond immediate network</p>
-        </div>
-      </article>
-
-      <!-- Fit -->
-      <article class="col-span-12 lg:col-span-6 solid-box p-7 lg:p-9">
-        <div class="kicker">Right Channels</div>
-        <h2 class="mt-2 text-3xl font-extrabold">Content + Community + Referrals</h2>
-        <div class="mt-5 grid gap-4">
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-users mr-2"></i> Manual email collection</div>
-            <ul class="mt-2 text-sm list-disc pl-5">
-              <li>Passed around paper to collect emails after pitch</li>
-              <li>Zero friction: students just wrote their email</li>
-              <li>Conversion jumped from <10% to >75%</li>
-              <li>Personal touch built trust and credibility</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-graduation-cap mr-2"></i> Campus Ambassador Program</div>
-            <ul class="mt-2 text-sm list-disc pl-5">
-              <li><b>Scalability bridge:</b> Replicated personal pitch nationwide</li>
-              <li><b>Social capital:</b> Students trusted peer recommendations</li>
-              <li><b>Community building:</b> Readers became advocates</li>
-              <li><b>Viral foundation:</b> Proved audience wanted to share</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
-            <div class="font-bold"><i class="fa-solid fa-gift mr-2"></i> Gamified referral program</div>
-            <ul class="mt-2 text-sm list-disc pl-5">
-              <li>Tiered rewards: 3 referrals → stickers, 50 → sweatshirt</li>
-              <li>30%+ of new subscribers from referrals monthly</li>
-              <li>25¢ cost per acquisition through referrals</li>
-              <li>Physical swag created "walking billboards"</li>
-            </ul>
-          </div>
-        </div>
-        <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p class="text-sm"><b>Result:</b> Self-sustaining flywheel, ultra-low CAC, strong community identity</p>
-        </div>
-      </article>
-    </section>
-
-    <!-- 3) PLAYBOOK -->
-    <section id="playbook" class="solid-box p-8 lg:p-12 reveal mb-10">
-      <div class="kicker">Content-Led Growth Mechanics</div>
-      <h3 class="mt-2 text-3xl font-extrabold">4-Step Playbook</h3>
-
-      <div class="grid grid-cols-12 gap-8 mt-8">
-        <!-- Vertical axis (sticky on desktop) -->
-        <div class="col-span-12 lg:col-span-3">
-          <div class="sticky-top">
-            <div class="eyebrow">Grassroots → Referral Engine</div>
-            <div class="mt-4 h-80 relative">
-              <div class="absolute left-5 top-0 bottom-0 border-l-2 border-[var(--ink)]"></div>
-              <div class="absolute left-4 top-1 w-3 h-3 rounded-full bg-[var(--hi)]"></div>
-              <div class="absolute left-4 top-1/3 w-3 h-3 rounded-full bg-[var(--ink)]"></div>
-              <div class="absolute left-4 top-2/3 w-3 h-3 rounded-full bg-[var(--ink)]"></div>
-              <div class="absolute left-4 bottom-1 w-3 h-3 rounded-full bg-[var(--ink)]"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Steps -->
-        <div class="col-span-12 lg:col-span-9">
-          <ol class="space-y-6">
-            <li class="p-5 line-box">
-              <div class="text-2xl font-black"><span class="text-[var(--hi)]">01</span> Do things that don't scale</div>
-              <p class="mt-2 text-sm mb-3">Manual, high-touch methods to find Product-Market Fit. Face-to-face pitching and paper signup collection.</p>
-              <div class="bg-gray-50 p-3 rounded text-xs">
-                <b>Key insight:</b> Manual tactics are real-time market research — invaluable for refining product and pitch
-              </div>
+    <!-- Founder Story Section - New authentic focus -->
+    <section id="founder-story" class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">The Human Foundation</div>
+      <h2 class="mt-3 text-4xl font-extrabold">Why Alex Lieberman's Pain Became Morning Brew's Power</h2>
+      
+      <div class="mt-10 grid gap-8 lg:grid-cols-3">
+        <!-- Personal Challenge -->
+        <div class="line-box p-8 bg-red-50 border-red-200">
+          <div class="text-4xl mb-4 text-center">😔</div>
+          <h3 class="font-bold text-xl mb-4 text-center">The Pain</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+              <span>Bullied from 5th-12th grade → felt like outsider</span>
             </li>
-            <li class="p-5 line-box">
-              <div class="text-2xl font-black"><span class="text-[var(--hi)]">02</span> Build scalability bridges</div>
-              <p class="mt-2 text-sm mb-3">Campus Ambassador Program replicates successful in-person strategy at scale across universities.</p>
-              <div class="bg-gray-50 p-3 rounded text-xs">
-                <b>Strategy:</b> Leverage social capital and community networks before going fully digital
-              </div>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+              <span>Father died at 46 during junior year → profound loss</span>
             </li>
-            <li class="p-5 line-box">
-              <div class="text-2xl font-black"><span class="text-[var(--hi)]">03</span> Engineer a referral flywheel</div>
-              <p class="mt-2 text-sm mb-3">Gamified tiered rewards turn readers into advocates. Physical swag creates community identity and social proof.</p>
-              <div class="bg-gray-50 p-3 rounded text-xs">
-                <b>Psychology:</b> Low barriers + gamification + community status = powerful viral mechanics
-              </div>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+              <span>WSJ felt "dry and dense" → business news was intimidating</span>
             </li>
-            <li class="p-5 line-box">
-              <div class="text-2xl font-black"><span class="text-[var(--hi)]">04</span> Content quality is the foundation</div>
-              <p class="mt-2 text-sm mb-3">Authentic, relatable brand voice makes content genuinely shareable. The referral program only works if content is worth sharing.</p>
-              <div class="bg-gray-50 p-3 rounded text-xs">
-                <b>Truth:</b> All growth tactics fail without genuinely valuable, engaging content
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4) KPIs / METRICS -->
-    <section id="kpi" class="grid-12 reveal mb-10">
-      <!-- Key metrics -->
-      <article class="col-span-12 lg:col-span-5 solid-box p-7 lg:p-9">
-        <div class="kicker">Growth Milestones</div>
-        <h4 class="mt-2 text-2xl font-extrabold">Bootstrapped to acquisition</h4>
-        <div class="mt-4 space-y-3">
-          <div class="line-box p-4">
-            <div class="flex justify-between items-center">
-              <span class="text-sm font-bold">First 1,000 readers</span>
-              <span class="font-bold">2015</span>
-            </div>
-            <div class="text-xs opacity-70 mt-1">Manual campus collection</div>
-          </div>
-          <div class="line-box p-4">
-            <div class="flex justify-between items-center">
-              <span class="text-sm font-bold">1M subscribers</span>
-              <span class="font-bold">2019</span>
-            </div>
-            <div class="text-xs opacity-70 mt-1">$13M revenue</div>
-          </div>
-          <div class="line-box p-4">
-            <div class="flex justify-between items-center">
-              <span class="text-sm font-bold">Acquisition</span>
-              <span class="font-bold">$75M</span>
-            </div>
-            <div class="text-xs opacity-70 mt-1">Majority stake (Oct 2020)</div>
-          </div>
-          <div class="line-box p-4">
-            <div class="flex justify-between items-center">
-              <span class="text-sm font-bold">Current scale</span>
-              <span class="font-bold">4M+</span>
-            </div>
-            <div class="text-xs opacity-70 mt-1">Subscribers, $70M revenue (2022)</div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Referral Program Analysis -->
-      <article class="col-span-12 lg:col-span-7 solid-box p-7 lg:p-9">
-        <div class="kicker">Referral Economics</div>
-        <h4 class="mt-2 text-2xl font-extrabold">The flywheel that changed everything</h4>
-        <p class="mt-2 text-sm mb-4">Gamified referral program drove 30%+ of new subscribers monthly at just 25¢ per acquisition.</p>
-        
-        <div class="mt-6 space-y-4">
-          <!-- Tier 1 -->
-          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-            <div class="w-10 h-10 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
-            <div class="flex-1">
-              <div class="font-bold text-sm">Stickers</div>
-              <div class="text-xs opacity-70">Low-barrier entry reward</div>
-            </div>
-            <div class="text-right">
-              <div class="font-bold text-sm">Wide adoption</div>
-              <div class="text-xs opacity-70">Gets people started</div>
-            </div>
-          </div>
-          
-          <!-- Tier 2 -->
-          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-            <div class="w-10 h-10 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">5</div>
-            <div class="flex-1">
-              <div class="font-bold text-sm">Sunday Edition</div>
-              <div class="text-xs opacity-70">Exclusive premium content</div>
-            </div>
-            <div class="text-right">
-              <div class="font-bold text-sm">Content value</div>
-              <div class="text-xs opacity-70">Hooks deeper engagement</div>
-            </div>
-          </div>
-          
-          <!-- Tier 3 -->
-          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-            <div class="w-10 h-10 bg-[var(--hi)] text-white rounded-full flex items-center justify-center text-sm font-bold">25</div>
-            <div class="flex-1">
-              <div class="font-bold text-sm">Coffee Mug</div>
-              <div class="text-xs opacity-70">Physical branded merchandise</div>
-            </div>
-            <div class="text-right">
-              <div class="font-bold text-sm">Daily reminder</div>
-              <div class="text-xs opacity-70">Brand reinforcement</div>
-            </div>
-          </div>
-          
-          <!-- Tier 4 -->
-          <div class="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200">
-            <div class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">50</div>
-            <div class="flex-1">
-              <div class="font-bold text-sm">Sweatshirt</div>
-              <div class="text-xs opacity-70">Premium community status symbol</div>
-            </div>
-            <div class="text-right">
-              <div class="font-bold text-sm">Walking billboard</div>
-              <div class="text-xs opacity-70">Social proof amplifier</div>
-            </div>
+          </ul>
+          <div class="mt-6 p-4 bg-red-100 rounded-lg">
+            <p class="text-xs font-semibold text-red-800">
+              💔 Core wound: Feeling excluded and misunderstood
+            </p>
           </div>
         </div>
         
-        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-          <div class="text-sm font-bold text-blue-800">Result: 30%+ monthly growth from referrals</div>
-          <div class="text-xs text-blue-600 mt-1">25¢ CAC vs. industry average of $10-50+ for newsletter subscriptions</div>
+        <!-- Transformation -->
+        <div class="line-box p-8 bg-yellow-50 border-yellow-200">
+          <div class="text-4xl mb-4 text-center">💡</div>
+          <h3 class="font-bold text-xl mb-4 text-center">The Insight</h3>
+          <blockquote class="text-sm italic mb-4 border-l-4 border-yellow-400 pl-4">
+            "I wanted to create something <b>welcoming</b> rather than intimidating. 
+            Business news should feel like chatting with a friend."
+          </blockquote>
+          <p class="text-sm mb-4">
+            Personal adversity created <b>deep empathy</b> for others who felt like outsiders. 
+            This wasn't a marketing tactic—it was authentic mission.
+          </p>
+          <div class="mt-6 p-4 bg-yellow-100 rounded-lg">
+            <p class="text-xs font-semibold text-yellow-800">
+              🎯 Breakthrough: Pain → Empathy → Authentic voice
+            </p>
+          </div>
         </div>
-      </article>
+        
+        <!-- Brand DNA -->
+        <div class="line-box p-8 bg-green-50 border-green-200">
+          <div class="text-4xl mb-4 text-center">🎨</div>
+          <h3 class="font-bold text-xl mb-4 text-center">The Voice</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between items-center">
+              <span>Conversational</span>
+              <span class="text-green-600">✓</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Witty but accessible</span>
+              <span class="text-green-600">✓</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Welcoming to outsiders</span>
+              <span class="text-green-600">✓</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Community-focused</span>
+              <span class="text-green-600">✓</span>
+            </div>
+          </div>
+          <div class="mt-6 p-4 bg-green-100 rounded-lg">
+            <p class="text-xs font-semibold text-green-800">
+              🏆 Result: Brand voice = unbreachable competitive moat
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-8 bg-blue-50 border-2 border-blue-200 rounded-xl">
+        <h4 class="font-bold text-lg mb-3 text-blue-800">🎭 The Authentic Advantage</h4>
+        <p class="text-sm text-blue-700 leading-relaxed">
+          <b>You can copy tactics, but you can't copy trauma.</b> Alex's journey from bullied outsider to 
+          empathetic communicator became Morning Brew's unbreachable advantage. The conversational tone wasn't 
+          a calculated marketing strategy—it was the natural expression of someone who understood what it felt 
+          like to be excluded and was determined to create something inclusive.
+        </p>
+      </div>
+    </section>
+
+    <!-- Strategy Evolution Timeline - Visual storytelling -->
+    <section id="evolution" class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">The Three-Act Growth Story</div>
+      <h2 class="mt-3 text-4xl font-extrabold">From Manual to Machine: Strategic Evolution</h2>
+      
+      <div class="mt-12 relative">
+        <!-- Timeline visual -->
+        <div class="hidden lg:block absolute left-12 top-0 bottom-0 w-1 timeline-line rounded-full"></div>
+        
+        <div class="space-y-12">
+          <!-- Act 1: Manual -->
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-24 h-24 bg-red-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10">
+              <span class="text-3xl">👋</span>
+            </div>
+            <div class="flex-1 line-box p-8">
+              <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold">Act I: "Do Things That Don't Scale"</h3>
+                <span class="text-sm bg-red-100 px-4 py-2 rounded-full font-semibold">2015-2016</span>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 class="font-semibold mb-3 text-red-600">The Problem:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• 5-minute class pitches to distracted students</li>
+                    <li>• Verbal signup requests: <b class="text-red-600"><10% conversion</b></li>
+                    <li>• High friction didn't match accessible brand promise</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-3 text-green-600">The Solution:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• Pass around paper for email collection</li>
+                    <li>• Zero friction: just write your email</li>
+                    <li>• Conversion jumped to <b class="text-green-600">75%+</b></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                <p class="text-sm font-semibold text-red-800">
+                  🔍 <b>Hidden Value:</b> Manual tactics = real-time market research. Invaluable for refining product and pitch before spending money on scale.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Act 2: Ambassadors -->
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10">
+              <span class="text-3xl">🎓</span>
+            </div>
+            <div class="flex-1 line-box p-8">
+              <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold">Act II: Campus Ambassador Bridge</h3>
+                <span class="text-sm bg-yellow-100 px-4 py-2 rounded-full font-semibold">2016-2018</span>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 class="font-semibold mb-3 text-yellow-600">The Strategy:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• Recruit enthusiastic readers as campus reps</li>
+                    <li>• Replicate proven manual pitch method</li>
+                    <li>• Leverage social capital and peer trust</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-3 text-green-600">The Results:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• Expanded to dozens of universities</li>
+                    <li>• Reached <b class="text-green-600">10,000+ subscribers</b> by 2017</li>
+                    <li>• Built community of advocates, not just readers</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <p class="text-sm font-semibold text-yellow-800">
+                  🌉 <b>Scalability Bridge:</b> Human-powered viral loop before digital automation. Proved audience wanted to share and advocate.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Act 3: Digital Flywheel -->
+          <div class="flex gap-8 items-start">
+            <div class="flex-shrink-0 w-24 h-24 bg-green-100 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10">
+              <span class="text-3xl">🎁</span>
+            </div>
+            <div class="flex-1 line-box p-8">
+              <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold">Act III: Gamified Referral Engine</h3>
+                <span class="text-sm bg-green-100 px-4 py-2 rounded-full font-semibold">2018-2022</span>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 class="font-semibold mb-3 text-green-600">The Mechanics:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• Tiered rewards: stickers → mug → sweatshirt</li>
+                    <li>• Progress tracking gamified the experience</li>
+                    <li>• Physical swag created "walking billboards"</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-3 text-blue-600">The Economics:</h4>
+                  <ul class="text-sm space-y-2">
+                    <li>• <b class="text-blue-600">30%+ monthly growth</b> from referrals</li>
+                    <li>• <b class="text-blue-600">$0.25 CAC</b> vs industry $10-50+</li>
+                    <li>• Reached 4M+ subscribers, $70M revenue</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                <p class="text-sm font-semibold text-green-800">
+                  🎯 <b>Digital Success Factor:</b> Only worked because of strong community foundation built in Acts I & II.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral Engine Deep Dive -->
+    <section id="referral-engine" class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">The $0.25 Machine</div>
+      <h2 class="mt-3 text-4xl font-extrabold">Anatomy of the Referral Engine That Changed Everything</h2>
+      
+      <div class="mt-10 grid gap-8">
+        <!-- Reward Ladder Visualization -->
+        <div class="line-box p-8">
+          <h3 class="text-2xl font-bold mb-8 text-center">The Gamified Reward Ladder</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <!-- Tier 1: Stickers -->
+            <div class="text-center p-6 bg-gradient-to-b from-gray-50 to-gray-100 rounded-xl border-2 border-gray-200">
+              <div class="text-5xl mb-4">🏷️</div>
+              <div class="text-3xl font-black text-gray-600 mb-2">3</div>
+              <div class="font-bold text-sm mb-2">Stickers</div>
+              <div class="text-xs text-gray-500 mb-3">Low barrier entry</div>
+              <div class="bg-gray-200 rounded-full h-2">
+                <div class="bg-gray-400 h-2 rounded-full" style="width: 25%"></div>
+              </div>
+            </div>
+            
+            <!-- Tier 2: Sunday Edition -->
+            <div class="text-center p-6 bg-gradient-to-b from-blue-50 to-blue-100 rounded-xl border-2 border-blue-200">
+              <div class="text-5xl mb-4">📰</div>
+              <div class="text-3xl font-black text-blue-600 mb-2">5</div>
+              <div class="font-bold text-sm mb-2">Sunday Edition</div>
+              <div class="text-xs text-gray-500 mb-3">Exclusive content</div>
+              <div class="bg-blue-200 rounded-full h-2">
+                <div class="bg-blue-500 h-2 rounded-full" style="width: 50%"></div>
+              </div>
+            </div>
+            
+            <!-- Tier 3: Coffee Mug -->
+            <div class="text-center p-6 bg-gradient-to-b from-orange-50 to-orange-100 rounded-xl border-2 border-orange-200">
+              <div class="text-5xl mb-4">☕</div>
+              <div class="text-3xl font-black text-orange-600 mb-2">25</div>
+              <div class="font-bold text-sm mb-2">Coffee Mug</div>
+              <div class="text-xs text-gray-500 mb-3">Daily brand reminder</div>
+              <div class="bg-orange-200 rounded-full h-2">
+                <div class="bg-orange-500 h-2 rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+            
+            <!-- Tier 4: Sweatshirt -->
+            <div class="text-center p-6 bg-gradient-to-b from-green-50 to-green-100 rounded-xl border-4 border-green-300 shadow-lg">
+              <div class="text-5xl mb-4">👕</div>
+              <div class="text-3xl font-black text-green-600 mb-2">50</div>
+              <div class="font-bold text-sm mb-2">Sweatshirt</div>
+              <div class="text-xs text-gray-500 mb-3">Walking billboard</div>
+              <div class="bg-green-200 rounded-full h-2">
+                <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- The Psychology & Economics -->
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Psychology -->
+          <div class="line-box p-8 bg-purple-50">
+            <h4 class="font-bold text-xl mb-6 text-purple-700 flex items-center gap-2">
+              <span class="text-2xl">🧠</span> Psychology
+            </h4>
+            <div class="space-y-4">
+              <div>
+                <div class="font-semibold text-sm mb-1">Low Barrier Entry</div>
+                <div class="text-xs text-gray-600">3 referrals feels achievable vs. 50</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Progress Gamification</div>
+                <div class="text-xs text-gray-600">Visual tracking creates engagement</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Social Proof</div>
+                <div class="text-xs text-gray-600">Physical swag = visible status</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Community Identity</div>
+                <div class="text-xs text-gray-600">Shared belonging drives advocacy</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Economics -->
+          <div class="line-box p-8 bg-green-50">
+            <h4 class="font-bold text-xl mb-6 text-green-700 flex items-center gap-2">
+              <span class="text-2xl">💰</span> Economics
+            </h4>
+            <div class="space-y-4">
+              <div>
+                <div class="font-semibold text-sm mb-1">Cost Per Acquisition</div>
+                <div class="text-xs text-gray-600"><b class="text-green-600">$0.25</b> vs industry $10-50+</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Monthly Growth Rate</div>
+                <div class="text-xs text-gray-600"><b class="text-green-600">30%+</b> from referrals alone</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">LTV Multiplier</div>
+                <div class="text-xs text-gray-600">Referred users = higher retention</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Viral Coefficient</div>
+                <div class="text-xs text-gray-600">Each user brings 2-3 others</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Flywheel Effect -->
+          <div class="line-box p-8 bg-blue-50">
+            <h4 class="font-bold text-xl mb-6 text-blue-700 flex items-center gap-2">
+              <span class="text-2xl">🔄</span> Flywheel
+            </h4>
+            <div class="space-y-4">
+              <div>
+                <div class="font-semibold text-sm mb-1">Content Quality</div>
+                <div class="text-xs text-gray-600">Makes sharing feel natural</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Swag Distribution</div>
+                <div class="text-xs text-gray-600">Creates brand awareness loops</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Community Pride</div>
+                <div class="text-xs text-gray-600">Strengthens brand loyalty</div>
+              </div>
+              <div>
+                <div class="font-semibold text-sm mb-1">Self-Reinforcing</div>
+                <div class="text-xs text-gray-600">More users = more advocates</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Key Insight -->
+        <div class="p-8 bg-orange-50 border-2 border-orange-200 rounded-xl">
+          <h4 class="font-bold text-xl mb-4 text-orange-800 flex items-center gap-2">
+            <span class="text-2xl">💡</span> The Critical Foundation
+          </h4>
+          <p class="text-sm text-orange-700 leading-relaxed">
+            <b>The referral program only worked because the content was genuinely shareable.</b> 
+            All the gamification and rewards in the world can't save mediocre content. Morning Brew's 
+            authentic, conversational voice made people <i>want</i> to share even without rewards. 
+            The referral system just amplified what was already happening naturally.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact & Results -->
+    <section id="impact" class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">Real Impact</div>
+      <h2 class="mt-3 text-4xl font-extrabold">The Numbers That Tell the Story</h2>
+      
+      <div class="mt-10 grid gap-8">
+        <!-- Key Metrics Dashboard -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="solid-box p-8 text-center bg-gradient-to-b from-orange-50 to-orange-100">
+            <div class="text-4xl font-black text-orange-600 mb-2">4M+</div>
+            <div class="font-semibold text-sm">Subscribers</div>
+            <div class="text-xs opacity-70 mt-1">2022</div>
+          </div>
+          
+          <div class="solid-box p-8 text-center bg-gradient-to-b from-green-50 to-green-100">
+            <div class="text-4xl font-black text-green-600 mb-2">$70M</div>
+            <div class="font-semibold text-sm">Revenue</div>
+            <div class="text-xs opacity-70 mt-1">Annual (2022)</div>
+          </div>
+          
+          <div class="solid-box p-8 text-center bg-gradient-to-b from-blue-50 to-blue-100">
+            <div class="text-4xl font-black text-blue-600 mb-2">30%</div>
+            <div class="font-semibold text-sm">Monthly Growth</div>
+            <div class="text-xs opacity-70 mt-1">From referrals</div>
+          </div>
+          
+          <div class="solid-box p-8 text-center bg-gradient-to-b from-purple-50 to-purple-100">
+            <div class="text-4xl font-black text-purple-600 mb-2">$0.25</div>
+            <div class="font-semibold text-sm">CAC</div>
+            <div class="text-xs opacity-70 mt-1">Referral program</div>
+          </div>
+        </div>
+        
+        <!-- Journey vs Benchmarks -->
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- The Journey -->
+          <div class="solid-box p-8">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="text-2xl">🚀</span> The 7-Year Journey
+            </h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-4 bg-orange-50 rounded-lg">
+                <div>
+                  <div class="font-semibold text-sm">2015: College newsletter</div>
+                  <div class="text-xs text-gray-500">Manual email collection</div>
+                </div>
+                <span class="font-bold text-orange-600">1K</span>
+              </div>
+              
+              <div class="flex justify-between items-center p-4 bg-yellow-50 rounded-lg">
+                <div>
+                  <div class="font-semibold text-sm">2017: Ambassador program</div>
+                  <div class="text-xs text-gray-500">Campus expansion</div>
+                </div>
+                <span class="font-bold text-yellow-600">10K</span>
+              </div>
+              
+              <div class="flex justify-between items-center p-4 bg-blue-50 rounded-lg">
+                <div>
+                  <div class="font-semibold text-sm">2019: Referral flywheel</div>
+                  <div class="text-xs text-gray-500">Gamification launched</div>
+                </div>
+                <span class="font-bold text-blue-600">1M</span>
+              </div>
+              
+              <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                <div>
+                  <div class="font-semibold text-sm">2022: Media empire</div>
+                  <div class="text-xs text-gray-500">$70M annual revenue</div>
+                </div>
+                <span class="font-bold text-green-600">4M+</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Competitive Advantage -->
+          <div class="solid-box p-8">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="text-2xl">🏆</span> vs Industry Standards
+            </h3>
+            
+            <div class="space-y-6">
+              <!-- CAC Comparison -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-semibold">Customer Acquisition Cost</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center text-sm">
+                    <span>Industry Average</span>
+                    <span class="font-bold text-red-600">$10-50+</span>
+                  </div>
+                  <div class="flex justify-between items-center text-sm">
+                    <span>Morning Brew</span>
+                    <span class="font-bold text-green-600">$0.25</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="bg-green-500 h-3 rounded-full relative" style="width: 95%">
+                      <span class="absolute right-2 top-0 text-xs text-white font-bold">95% cheaper</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Growth Rate -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-semibold">Monthly Growth Rate</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center text-sm">
+                    <span>Typical Newsletter</span>
+                    <span class="font-bold text-red-600">5-10%</span>
+                  </div>
+                  <div class="flex justify-between items-center text-sm">
+                    <span>Morning Brew (Referrals)</span>
+                    <span class="font-bold text-green-600">30%+</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="bg-green-500 h-3 rounded-full relative" style="width: 75%">
+                      <span class="absolute right-2 top-0 text-xs text-white font-bold">3x faster</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+              <p class="text-sm font-semibold text-green-800">
+                🎯 <b>Bottom Line:</b> Built a $75M media company with virtually zero paid acquisition
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Key Insights -->
-    <section class="solid-box p-8 lg:p-12 reveal mb-10">
-      <div class="kicker">Insights</div>
-      <h3 class="mt-2 text-3xl font-extrabold">What Made the Difference</h3>
-      <div class="mt-8 grid gap-6 lg:grid-cols-2">
-        <div class="space-y-4">
-          <div class="line-box p-5">
-            <h4 class="font-bold mb-2">🎯 Authentic Brand Voice</h4>
-            <p class="text-sm">Conversational tone wasn't marketing - it reflected founder's genuine desire to make business news accessible</p>
+    <section class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">Core Insights</div>
+      <h2 class="mt-3 text-4xl font-extrabold">What Made the Difference</h2>
+      
+      <div class="mt-10 grid lg:grid-cols-2 gap-8">
+        <div class="space-y-6">
+          <div class="line-box p-6 bg-red-50 border-red-200">
+            <h4 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <span class="text-xl">🎭</span> Authentic Brand Voice
+            </h4>
+            <p class="text-sm text-gray-700">
+              The conversational tone wasn't marketing—it was genuine. Alex's personal experience 
+              created empathy for outsiders, resulting in a voice that felt welcoming rather than intimidating.
+            </p>
           </div>
-          <div class="line-box p-5">
-            <h4 class="font-bold mb-2">🔄 Manual Before Digital</h4>
-            <p class="text-sm">"Unscalable" tactics provided crucial market feedback and refined the pitch before automation</p>
+          
+          <div class="line-box p-6 bg-orange-50 border-orange-200">
+            <h4 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <span class="text-xl">🏗️</span> Manual Before Digital
+            </h4>
+            <p class="text-sm text-gray-700">
+              "Unscalable" tactics provided crucial market feedback. The 75% conversion from paper signup 
+              validated the approach before they spent money on automation.
+            </p>
           </div>
         </div>
-        <div class="space-y-4">
-          <div class="line-box p-5">
-            <h4 class="font-bold mb-2">🎮 Psychology of Gamification</h4>
-            <p class="text-sm">Tiered rewards + progress tracking + social proof = powerful motivation to share and engage</p>
+        
+        <div class="space-y-6">
+          <div class="line-box p-6 bg-green-50 border-green-200">
+            <h4 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <span class="text-xl">🎮</span> Psychology of Gamification
+            </h4>
+            <p class="text-sm text-gray-700">
+              Tiered rewards + progress tracking + social proof created powerful motivation to share. 
+              Physical swag turned readers into walking advertisements.
+            </p>
           </div>
-          <div class="line-box p-5">
-            <h4 class="font-bold mb-2">💰 Community as Distribution</h4>
-            <p class="text-sm">Readers became advocates because they felt part of something bigger than just consuming content</p>
+          
+          <div class="line-box p-6 bg-blue-50 border-blue-200">
+            <h4 class="font-bold text-lg mb-3 flex items-center gap-2">
+              <span class="text-xl">👥</span> Community as Distribution
+            </h4>
+            <p class="text-sm text-gray-700">
+              Readers became advocates because they felt part of something bigger than just consuming content. 
+              Community identity drove sharing more than rewards.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5) TAKEAWAYS -->
-    <section class="solid-box p-8 lg:p-12 reveal mb-10">
-      <div class="kicker">Actionable Lessons</div>
-      <h3 class="mt-2 text-3xl font-extrabold">What content creators can copy</h3>
-      <div class="grid grid-cols-12 gap-5 mt-6">
-        <div class="col-span-12 md:col-span-3 line-box p-5">
-          <div class="font-extrabold mb-1"><i class="fa-solid fa-handshake mr-2"></i> Do unscalable first</div>
-          <p class="text-sm">Manual tactics = real-time market research. Perfect your pitch before automation.</p>
+    <!-- Actionable Takeaways -->
+    <section class="solid-box p-10 lg:p-16 reveal mb-16">
+      <div class="kicker">What You Can Copy</div>
+      <h2 class="mt-3 text-4xl font-extrabold">Lessons for Content Creators</h2>
+      
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="line-box p-6 text-center">
+          <div class="text-3xl mb-4">🤝</div>
+          <h4 class="font-bold text-sm mb-3">Do Unscalable First</h4>
+          <p class="text-xs text-gray-600">
+            Manual tactics = real-time market research. Perfect your message before automation.
+          </p>
         </div>
-        <div class="col-span-12 md:col-span-3 line-box p-5">
-          <div class="font-extrabold mb-1"><i class="fa-solid fa-users mr-2"></i> Build community, not audience</div>
-          <p class="text-sm">Make readers feel like insiders, not just consumers. Community identity drives sharing.</p>
+        
+        <div class="line-box p-6 text-center">
+          <div class="text-3xl mb-4">👥</div>
+          <h4 class="font-bold text-sm mb-3">Build Community, Not Audience</h4>
+          <p class="text-xs text-gray-600">
+            Make readers feel like insiders. Community identity drives sharing behavior.
+          </p>
         </div>
-        <div class="col-span-12 md:col-span-3 line-box p-5">
-          <div class="font-extrabold mb-1"><i class="fa-solid fa-gift mr-2"></i> Engineer referral flywheel</div>
-          <p class="text-sm">Gamify sharing with tiered rewards. Physical swag creates walking billboards.</p>
+        
+        <div class="line-box p-6 text-center">
+          <div class="text-3xl mb-4">🎁</div>
+          <h4 class="font-bold text-sm mb-3">Engineer Referral Flywheel</h4>
+          <p class="text-xs text-gray-600">
+            Gamify sharing with tiered rewards. Physical swag creates walking billboards.
+          </p>
         </div>
-        <div class="col-span-12 md:col-span-3 line-box p-5">
-          <div class="font-extrabold mb-1"><i class="fa-solid fa-microphone mr-2"></i> Voice is the product</div>
-          <p class="text-sm">For content businesses, authentic brand voice is the only sustainable moat.</p>
+        
+        <div class="line-box p-6 text-center">
+          <div class="text-3xl mb-4">🎤</div>
+          <h4 class="font-bold text-sm mb-3">Voice is the Product</h4>
+          <p class="text-xs text-gray-600">
+            For content businesses, authentic brand voice is the only sustainable moat.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Navigation -->
     <section class="flex justify-between items-center">
-      <a href="../index.html" class="btn">
-        <i class="fa-solid fa-arrow-left"></i> All Cases
-      </a>
+      <div>
+        <a href="../index.html" class="btn">
+          <i class="fa-solid fa-arrow-left mr-2"></i> All Cases
+        </a>
+      </div>
       <div class="text-sm opacity-70">
         Case Study #003
       </div>
-      <a href="calendly.html" class="btn">
-        <i class="fa-solid fa-arrow-left mr-2"></i> Previous: Calendly
-      </a>
+      <div>
+        <a href="calendly.html" class="btn">
+          <i class="fa-solid fa-arrow-left mr-2"></i> Previous: Calendly
+        </a>
+      </div>
     </section>
 
   </main>
 
   <footer class="border-t border-gray-200 mt-16">
     <div class="wrap px-6 lg:px-12 xl:px-16 py-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex justify-between items-center">
         <div class="text-sm opacity-70">
           Morning Brew case study • Part of Product-Channel Fit Cases
         </div>
         <div class="flex gap-4">
-          <a href="https://github.com/Quintas0658/Case" class="text-sm hover:text-[var(--hi)] transition-colors">
-            <i class="fa-brands fa-github mr-1"></i> Suggest Edit
+          <a href="https://github.com/Quintas0658/Case" class="text-sm hover:text-[var(--hi)] transition-colors" onclick="trackEvent('github_click', {event_category: 'external_link', case: 'morning-brew'});">
+            <i class="fa-brands fa-github mr-1"></i> GitHub
           </a>
-          <a href="../index.html" class="text-sm hover:text-[var(--hi)] transition-colors">
-            <i class="fa-solid fa-home mr-1"></i> Home
+          <a href="https://github.com/Quintas0658/Case/issues/new/choose" class="text-sm hover:text-[var(--hi)] transition-colors" onclick="trackEvent('suggest_analysis_click', {event_category: 'engagement', case: 'morning-brew'});">
+            <i class="fa-solid fa-lightbulb mr-1"></i> Suggest Analysis
           </a>
         </div>
       </div>
@@ -565,74 +791,39 @@
   </footer>
 
   <script>
-    // Event tracking function
-    function trackEvent(eventName, eventData = {}) {
+    // Custom event tracking function
+    function trackEvent(eventName, parameters = {}) {
       if (typeof gtag !== 'undefined') {
-        gtag('event', eventName, eventData);
+        gtag('event', eventName, parameters);
       }
-      console.log('Event:', eventName, eventData);
+      console.log('Event tracked:', eventName, parameters);
     }
 
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const ob = new IntersectionObserver((ents)=>{
-      ents.forEach(e=>{
-        if(e.isIntersecting){ 
-          e.target.classList.add('show'); 
-          ob.unobserve(e.target); 
-        }
-      })
-    },{threshold:.12});
-    reveals.forEach(el=>ob.observe(el));
-
-    // Count-up numbers (static for clarity)
-    const n10m = document.getElementById('num10m');
-    const n3b  = document.getElementById('num3b');
-    const ob2 = new IntersectionObserver((ents)=>{
-      ents.forEach(e=>{
-        if(e.isIntersecting){
-          if(e.target===n10m){ 
-            n10m.textContent = '10M+';
-                          trackEvent('metric_view', { metric: '4M_subscribers', case: 'morning-brew' });
-            }
-            if(e.target===n70m){  
-              n70m.textContent  = '$70M';
-              trackEvent('metric_view', { metric: '70M_revenue', case: 'morning-brew' });
-          }
-          ob2.unobserve(e.target);
+    // Reveal animations on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
       });
-    },{threshold:.6});
-    [document.getElementById('num4m'),document.getElementById('num70m')].forEach(el=>ob2.observe(el));
+    }, { threshold: 0.1 });
 
-    // Track navigation clicks
-    document.querySelectorAll('a[href*="github"]').forEach(link => {
-      link.addEventListener('click', () => {
-        trackEvent('github_click', {
-          event_category: 'external_link',
-          case: 'morning-brew'
-        });
-      });
-    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Track internal navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  trackEvent('internal_navigation', {
+    // Track internal navigation clicks
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function() {
+        trackEvent('internal_navigation', {
           section: this.getAttribute('href'),
           case: 'morning-brew'
         });
-        }
       });
     });
 
     // Track case navigation
-    document.querySelectorAll('a[href*="cases/"]').forEach(link => {
-      link.addEventListener('click', () => {
+    document.querySelectorAll('a[href*=".html"]').forEach(link => {
+      link.addEventListener('click', function() {
         trackEvent('case_navigation', {
           from: 'morning-brew',
           to: link.href.includes('calendly') ? 'calendly' : (link.href.includes('savewise') ? 'savewise' : 'other')
