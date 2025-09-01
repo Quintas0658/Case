@@ -91,7 +91,7 @@
 
 <body class="antialiased selection:bg-[var(--hi)] selection:text-white">
   <main class="wrap px-6 lg:px-12 xl:px-16 py-10 lg:py-14">
-
+    
     <!-- Hero Section -->
     <section class="hero-section grid-12 mb-10">
       <div class="col-span-12 lg:col-span-7">
@@ -331,18 +331,18 @@
                 <li>5-minute pitches to distracted students</li>
                 <li>Students not ready to sign up on the spot</li>
                 <li>Conversion rate less than 10%</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
+              </ul>
+            </div>
+            <div class="line-box p-5">
               <div class="font-bold"><i class="fa-solid fa-dollar-sign mr-2"></i> Traditional marketing</div>
               <ul class="mt-2 text-sm space-y-1">
                 <li>No budget for paid advertising</li>
                 <li>Social media had limited reach</li>
                 <li>Hard to compete with established brands</li>
               </ul>
+            </div>
           </div>
-        </div>
-        <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
             <p class="text-sm"><b>Result:</b> Slow initial growth, difficult to scale beyond immediate network</p>
           </div>
         </div>
@@ -350,25 +350,25 @@
         <div class="solid-box p-8">
           <div class="kicker">Right Channels</div>
           <h2 class="mt-2 text-3xl font-extrabold">Content + Community + Referrals</h2>
-        <div class="mt-5 grid gap-4">
-          <div class="line-box p-5">
+          <div class="mt-5 grid gap-4">
+            <div class="line-box p-5">
               <div class="font-bold"><i class="fa-solid fa-users mr-2"></i> Manual email collection</div>
               <ul class="mt-2 text-sm space-y-1">
                 <li>Zero friction: just write your email</li>
                 <li>Conversion jumped to >75%</li>
                 <li>Personal touch built credibility</li>
-            </ul>
-          </div>
-          <div class="line-box p-5">
+              </ul>
+            </div>
+            <div class="line-box p-5">
               <div class="font-bold"><i class="fa-solid fa-gift mr-2"></i> Gamified referral program</div>
               <ul class="mt-2 text-sm space-y-1">
                 <li>30%+ new subscribers monthly</li>
                 <li>25¢ cost per acquisition</li>
                 <li>Physical swag created "walking billboards"</li>
-            </ul>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
             <p class="text-sm"><b>Result:</b> Self-sustaining flywheel, ultra-low CAC, strong community identity</p>
           </div>
         </div>
@@ -489,9 +489,9 @@
         <div class="kicker">Revenue Streams</div>
         <h4 class="mt-2 text-2xl font-extrabold">How Morning Brew makes money</h4>
         <div class="mt-6 grid lg:grid-cols-2 gap-6">
-          <div style="height: 200px;">
-            <canvas id="revenueChart"></canvas>
-            </div>
+          <div>
+            <canvas id="revenueChart" height="200"></canvas>
+          </div>
           <div class="space-y-4">
             <div class="line-box p-4">
               <div class="font-bold text-sm mb-1">Newsletter Advertising</div>
@@ -509,10 +509,10 @@
               <div class="text-lg font-bold text-[var(--hi)]">~15%</div>
             </div>
           </div>
-            </div>
+        </div>
       </article>
-          </div>
-          
+      </div>
+      
       <!-- Growth Trajectory -->
       <div class="mt-6 solid-box p-7 lg:p-9">
         <div class="kicker">Growth Trajectory</div>
@@ -520,18 +520,14 @@
         <div class="mt-6 grid lg:grid-cols-2 gap-8">
           <div>
             <h5 class="font-bold mb-4">Subscriber Growth</h5>
-            <div style="height: 200px;">
-              <canvas id="subscriberChart"></canvas>
-            </div>
+            <canvas id="subscriberChart" height="200"></canvas>
           </div>
           <div>
             <h5 class="font-bold mb-4">Revenue Growth</h5>
-            <div style="height: 200px;">
-              <canvas id="revenueGrowthChart"></canvas>
-            </div>
+            <canvas id="revenueGrowthChart" height="200"></canvas>
           </div>
         </div>
-        </div>
+      </div>
     </section>
 
     <!-- Insights -->
@@ -589,9 +585,9 @@
     <!-- Navigation -->
     <section class="flex justify-between items-center">
       <div>
-      <a href="../index.html" class="btn">
+        <a href="../index.html" class="btn">
           <i class="fa-solid fa-arrow-left mr-2"></i> All Cases
-      </a>
+        </a>
       </div>
       <div class="text-sm opacity-70">
         Case Study #003
@@ -599,7 +595,7 @@
       <div>
         <a href="calendly.html" class="btn">
           <i class="fa-solid fa-arrow-left mr-2"></i> Previous: Calendly
-      </a>
+        </a>
       </div>
     </section>
 
@@ -689,11 +685,10 @@
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
         plugins: {
           legend: { display: false }
-        }
+        },
+        maintainAspectRatio: false
       }
     });
 
@@ -712,8 +707,6 @@
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
           y: {
@@ -724,7 +717,8 @@
               }
             }
           }
-        }
+        },
+        maintainAspectRatio: false
       }
     });
 
@@ -743,8 +737,6 @@
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
           y: {
@@ -754,7 +746,8 @@
               }
             }
           }
-        }
+        },
+        maintainAspectRatio: false
       }
     });
 
