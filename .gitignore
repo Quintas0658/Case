@@ -26,4 +26,3 @@ yarn-error.log*
 # Build outputs (if any)
 dist/
 build/
-.vercel
